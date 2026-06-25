@@ -1,12 +1,15 @@
-import OfficeParser from "officeparser";
+import {OfficeParser} from "officeparser";
 
-const officeParser = require('officeparser');
 
-export async function parseDocument(file: File) {
+
+export async function parseDocument(arrayBuffer: ArrayBuffer) {
     try {
-        const buffer = await file.arrayBuffer();
-        const ast = await OfficeParser.parseOffice(new Uint8Array(buffer));
+        const ast = await OfficeParser.parseOffice(new Uint8Array(arrayBuffer));
         return ast;
+    }
+     catch (error) {
+        console.error("Parsing failed:", error);
+        throw error;
     }
 
     
