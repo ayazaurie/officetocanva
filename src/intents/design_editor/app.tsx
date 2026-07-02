@@ -1,4 +1,4 @@
-import { useFeatureSupport } from "@canva/app-hooks";
+import { useFeatureSupport, useSelection } from "@canva/app-hooks";
 import React, { useRef } from "react";
 import { Button, Rows, Text } from "@canva/app-ui-kit";
 import type { DesignEditing, InlineFormatting } from "@canva/design";
@@ -8,11 +8,12 @@ import {
   addElementAtPoint,
   addPage,
   createRichtextRange,
+
 } from "@canva/design";
 import { requestOpenExternalUrl } from "@canva/platform";
 import { FormattedMessage, useIntl } from "react-intl";
 import * as styles from "styles/components.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { findFonts } from "@canva/asset";
 
 export const DOCS_URL = "https://www.canva.dev/docs/apps/";
@@ -107,31 +108,40 @@ export const App = () => {
 
   const intl = useIntl();
 
+  const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
   const jsonToCanva = async (parsedData: DocumentParagraph[]) => {
+
+
     const { fonts } = await findFonts();
 
     const elementsPerPageLimit = 5;
     const startTopPos = 170;
     const startLeftPos = 83;
     const elementWidth = 695;
-    const elementGap = 18;
-    const h1Size = 23;
-    const h2Size = 13;
-    const textSize = 13;
+    const elementGap = 120;
+    const h1Size = 30.7;
+    const h2Size = 17.3;
+    const textSize = 17.3;
 
     let elementCount = 0;
     let currentTopPos = startTopPos;
+    const sleepTime = 501;
 
-    for (const paragraph of parsedData) {
-      if (paragraph.type !== "paragraph") continue;
+
+    for (const content of parsedData) {
+      if (content.type !== "paragraph" && content.type !== "heading" && content.type !== "table") continue;
       if (elementCount > 0 && elementCount % elementsPerPageLimit === 0) {
         await addPage();
+        await sleep(sleepTime);
+        
         currentTopPos = startTopPos;
       }
-      if (paragraph.metadata?.style === "Ttulo1") {
-        addElementAtPoint({
+      if (content.metadata?.style === "Heading1") {
+        console.log("HEADING 1 DETECTED");
+        await addElementAtPoint({
           type: "text",
-          children: [paragraph.text],
+          children: [content.text],
           fontSize: h1Size,
           fontWeight: "bold",
           textAlign: "start",
@@ -139,11 +149,17 @@ export const App = () => {
           left: startLeftPos,
           width: elementWidth,
         });
+        currentTopPos += elementGap;
+        elementCount++;
+        await sleep(sleepTime);
+
         continue;
-      } else if (paragraph.metadata?.style === "Ttulo2") {
-        addElementAtPoint({
+      } else if (content.metadata?.style === "Heading2") {
+        console.log("HEADING2 DETECTED")
+
+        await addElementAtPoint({
           type: "text",
-          children: [paragraph.text],
+          children: [content.text],
           fontSize: h2Size,
           fontWeight: "bold",
           textAlign: "start",
@@ -151,52 +167,78 @@ export const App = () => {
           left: startLeftPos,
           width: elementWidth,
         });
+        currentTopPos += elementGap;
+        elementCount++;
+        await sleep(sleepTime);
         continue;
-      } else if (paragraph.metadata?.style) {
-        const paragraphRange = createRichtextRange();
-        for (const child of paragraph.children) {
-          const canvaStyles: InlineFormatting = {};
-          if (child.formatting) {
-            if (child.formatting.bold) {
-              canvaStyles.fontWeight = "bold";
-            }
-            if (child.formatting.italic) {
-              canvaStyles.fontStyle = "italic";
-            }
 
-            // if(child.formatting.font)
-            // {
-            //   const matchedFont = fonts.find((f) => f.name.toLowerCase() === child.formatting!.font!.toLowerCase());
-
-            //   if (matchedFont)
-            //   {
-            //     canvaStyles.fontRef = matchedFont.ref;
-            //   } else {
-            //     console.warn(`Font "${child.formatting.font}" isn't available in Canva. Falling back.`);
-            //   }
-
-            // }
-          }
-
-          paragraphRange.appendText(child.text, canvaStyles);
-          const textLength = paragraphRange.readPlaintext().length;
-          paragraphRange.formatParagraph(
-            { index: 0, length: textLength },
-            {
-              fontSize: textSize,
-            },
-          );
-        }
+      }
+      else if (content.metadata?.style === "Heading3") {
+        console.log("HEADING3 DETECTED")
         await addElementAtPoint({
-          type: "richtext",
-          range: paragraphRange,
+          type: "text",
+          children: [content.text],
+          fontSize: h2Size,
+          fontWeight: "bold",
+          textAlign: "start",
           top: currentTopPos,
           left: startLeftPos,
           width: elementWidth,
         });
+        currentTopPos += elementGap;
+        elementCount++;
+        await sleep(sleepTime);
+        continue;
       }
-      currentTopPos += elementGap;
-      elementCount++;
+      else if (!content.metadata?.style) {
+        console.log("TEXT DETECTED");
+        // const paragraphRange = createRichtextRange();
+        // for (const child of content.children) {
+        //   const canvaStyles: InlineFormatting = {};
+        //   if (child.formatting) {
+        //     if (child.formatting.bold) {
+        //       canvaStyles.fontWeight = "bold";
+        //     }
+        //     if (child.formatting.italic) {
+        //       canvaStyles.fontStyle = "italic";
+        //     }
+
+        //   }
+
+        //   paragraphRange.appendText(child.text, canvaStyles);
+        //   const textLength = paragraphRange.readPlaintext().length;
+        //   paragraphRange.formatParagraph(
+        //     { index: 0, length: textLength },
+        //     {
+        //       fontSize: textSize,
+        //     },
+        //   );
+        // }
+        // await addElementAtPoint({
+        //   type: "richtext",
+        //   range: paragraphRange,
+        //   top: currentTopPos,
+        //   left: startLeftPos,
+        //   width: elementWidth,
+        // });
+         addElementAtPoint({
+          type: "text",
+          children: [content.text],
+          fontSize: h2Size,
+
+          textAlign: "start",
+          top: currentTopPos,
+          left: startLeftPos,
+          width: elementWidth,
+        });
+        currentTopPos += elementGap;
+        elementCount++;
+        await sleep(sleepTime);
+        continue;
+
+      }
+
+
     }
   };
 
@@ -228,11 +270,11 @@ export const App = () => {
           tooltipLabel={
             !addElement
               ? intl.formatMessage({
-                  defaultMessage:
-                    "This feature is not supported in the current page",
-                  description:
-                    "Tooltip label for when a feature is not supported in the current design",
-                })
+                defaultMessage:
+                  "This feature is not supported in the current page",
+                description:
+                  "Tooltip label for when a feature is not supported in the current design",
+              })
               : undefined
           }
           stretch
