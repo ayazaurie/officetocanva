@@ -2,13 +2,18 @@ import { useFeatureSupport } from "@canva/app-hooks";
 import React, { useRef } from "react";
 import { Button, Rows, Text } from "@canva/app-ui-kit";
 import type { DesignEditing, InlineFormatting } from "@canva/design";
-import { openDesign, addElementAtCursor, addElementAtPoint, addPage, createRichtextRange } from "@canva/design";
+import {
+  openDesign,
+  addElementAtCursor,
+  addElementAtPoint,
+  addPage,
+  createRichtextRange,
+} from "@canva/design";
 import { requestOpenExternalUrl } from "@canva/platform";
 import { FormattedMessage, useIntl } from "react-intl";
 import * as styles from "styles/components.css";
 import { useState } from "react";
 import { findFonts } from "@canva/asset";
-
 
 export const DOCS_URL = "https://www.canva.dev/docs/apps/";
 
@@ -19,10 +24,10 @@ interface DocumentChildren {
     bold?: boolean;
     italic?: boolean;
     font?: string;
-  }
+  };
   metadata?: {
     style?: string;
-  }
+  };
 }
 
 interface DocumentParagraph {
@@ -31,7 +36,7 @@ interface DocumentParagraph {
   children: DocumentChildren[];
   metadata?: {
     style?: string;
-  }
+  };
 }
 
 enum Operation {
@@ -51,8 +56,7 @@ export const App = () => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const handlebuttonClick = () => {
     fileInputRef.current?.click();
-  }
-
+  };
 
   const isSupported = useFeatureSupport();
   const addElement = [addElementAtPoint, addElementAtCursor].find((fn) =>
@@ -64,7 +68,6 @@ export const App = () => {
       fileInputRef.current.value = "";
       fileInputRef.current.click();
     }
-
   };
 
   const onFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -78,11 +81,10 @@ export const App = () => {
         const parsedata = JSON.parse(jsonString);
         const contentArray = parsedata.content as DocumentParagraph[];
         jsonToCanva(contentArray);
-
       } catch (error) {
         console.error("Error parsing JSON:", error);
       }
-    }
+    };
 
     reader.readAsText(file);
   };
@@ -90,10 +92,8 @@ export const App = () => {
   async function checkPageCompatibility() {
     await openDesign({ type: "current_page" }, async (session) => {
       console.log(`The current page is ${session.page.type}`);
-    })
+    });
   }
-
-
 
   const openExternalUrl = async (url: string) => {
     const response = await requestOpenExternalUrl({
@@ -108,9 +108,7 @@ export const App = () => {
   const intl = useIntl();
 
   const jsonToCanva = async (parsedData: DocumentParagraph[]) => {
-
     const { fonts } = await findFonts();
-
 
     const elementsPerPageLimit = 5;
     const startTopPos = 170;
@@ -124,9 +122,8 @@ export const App = () => {
     let elementCount = 0;
     let currentTopPos = startTopPos;
 
-
     for (const paragraph of parsedData) {
-      if (paragraph.type !== 'paragraph') continue;
+      if (paragraph.type !== "paragraph") continue;
       if (elementCount > 0 && elementCount % elementsPerPageLimit === 0) {
         await addPage();
         currentTopPos = startTopPos;
@@ -143,7 +140,6 @@ export const App = () => {
           width: elementWidth,
         });
         continue;
-
       } else if (paragraph.metadata?.style === "Ttulo2") {
         addElementAtPoint({
           type: "text",
@@ -154,11 +150,9 @@ export const App = () => {
           top: currentTopPos,
           left: startLeftPos,
           width: elementWidth,
-
         });
         continue;
-      }
-      else if (paragraph.metadata?.style) {
+      } else if (paragraph.metadata?.style) {
         const paragraphRange = createRichtextRange();
         for (const child of paragraph.children) {
           const canvaStyles: InlineFormatting = {};
@@ -186,10 +180,12 @@ export const App = () => {
 
           paragraphRange.appendText(child.text, canvaStyles);
           const textLength = paragraphRange.readPlaintext().length;
-          paragraphRange.formatParagraph({ index: 0, length: textLength },
+          paragraphRange.formatParagraph(
+            { index: 0, length: textLength },
             {
               fontSize: textSize,
-            })
+            },
+          );
         }
         await addElementAtPoint({
           type: "richtext",
@@ -197,15 +193,12 @@ export const App = () => {
           top: currentTopPos,
           left: startLeftPos,
           width: elementWidth,
-
         });
-
       }
       currentTopPos += elementGap;
       elementCount++;
     }
-  }
-
+  };
 
   return (
     <div className={styles.scrollContainer}>
@@ -213,7 +206,7 @@ export const App = () => {
         type="file"
         ref={fileInputRef}
         onChange={onFileChange}
-        style={{ display: 'none' }}
+        style={{ display: "none" }}
         accept=".json"
       />
       <Rows spacing="2u">
@@ -235,11 +228,11 @@ export const App = () => {
           tooltipLabel={
             !addElement
               ? intl.formatMessage({
-                defaultMessage:
-                  "This feature is not supported in the current page",
-                description:
-                  "Tooltip label for when a feature is not supported in the current design",
-              })
+                  defaultMessage:
+                    "This feature is not supported in the current page",
+                  description:
+                    "Tooltip label for when a feature is not supported in the current design",
+                })
               : undefined
           }
           stretch
@@ -261,4 +254,3 @@ export const App = () => {
     </div>
   );
 };
-
