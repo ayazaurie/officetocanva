@@ -1,4 +1,4 @@
-import { useFeatureSupport, useSelection } from "@canva/app-hooks";
+import { useFeatureSupport, useSelection, useTable } from "@canva/app-hooks";
 import React, { useRef } from "react";
 import { Button, Rows, Text } from "@canva/app-ui-kit";
 import type { DesignEditing, InlineFormatting } from "@canva/design";
@@ -8,13 +8,15 @@ import {
   addElementAtPoint,
   addPage,
   createRichtextRange,
-
+  TableElement,
+  Cell,
 } from "@canva/design";
 import { requestOpenExternalUrl, notification } from "@canva/platform";
 import { FormattedMessage, useIntl } from "react-intl";
 import * as styles from "styles/components.css";
 import { useState, useEffect } from "react";
 import { findFonts } from "@canva/asset";
+
 
 export const DOCS_URL = "https://www.canva.dev/docs/apps/";
 
@@ -26,8 +28,11 @@ interface DocumentChildren {
     italic?: boolean;
     font?: string;
   };
+  children?: DocumentChildren[];
   metadata?: {
     style?: string;
+    row?: number;
+    col?: number;
   };
 }
 
@@ -121,9 +126,11 @@ export const App = () => {
     const startLeftPos = 83; // Start position where to place elements
     const elementWidth = 695; // How much widdth the text element will have
     const elementGap = 120; // Space betwween place elements, will refractor later.
-    const h1Size = 30.7; 
+    const h1Size = 30.7;
     const h2Size = 17.3;
     const textSize = 17.3;
+    const titleRowColor = "#102b42";
+    const cellColor = "#ffffff";
 
     let elementCount = 0;
     let currentTopPos = startTopPos;
@@ -190,10 +197,62 @@ export const App = () => {
         await sleep(sleepTime);
         continue;
       }
+      else if (content.type === "table") {
+
+        const rowAmount = content.children.length;
+        const lastRow = content.children[rowAmount - 1];
+        const cellAmount = lastRow?.children?.length;
+
+        var lastCel;
+        if (cellAmount && lastRow.children && lastRow)
+          lastCel = lastRow.children[cellAmount - 1];
+        var colAmount = lastCel?.metadata?.col;
+        if (colAmount) colAmount += 1;
+        if(!cellAmount) continue;
+        await notification.addToast({ messageText: rowAmount.toString() });
+        
+        const tableRows = [];
+
+        for (const rows of content.children) {
+          const rowCells = [];
+          if (rows.children)
+            for (const cells of rows.children) {
+              if (cells.children)
+                for (const cell of cells.children) {
+                
+                  var cellRow = cell.metadata?.row;
+                  var cellCol = cell.metadata?.col;
+                  if (cellRow && cellCol) {
+                    cellRow += 1;
+                    cellCol += 1;
+                    }
+                  const textContent = cell.text || "";
+                  var fill = cellColor;
+                  if(cellRow === 1) fill = titleRowColor;
+                
+                  rowCells.push({ 
+                    type: "string" as const,
+                    value: textContent,
+                    fillColor: titleRowColor,
+                  });
+                  }
+                
+            }
+            tableRows.push({cells: rowCells});
+        }
+
+        const tableElement: TableElement = {
+          type: 'table', 
+          rows: tableRows,
+        }
+        await addElementAtPoint(tableElement);
+        
+
+      }
       else if (!content.metadata?.style) {
 
         const paragraphRange = createRichtextRange();
-        
+
         for (const child of content.children) {
           //If the child's formatting has bold/italic, style it's text as bold/italic, otherwise make it normal text
           const canvaStyles: InlineFormatting = {
@@ -201,11 +260,11 @@ export const App = () => {
             fontStyle: child.formatting?.italic ? "italic" : "normal",
           };
 
-          if(child.text && child.text.length > 0) //Makes sure that the string isn't empty
-          paragraphRange.appendText(child.text, canvaStyles);
-        
+          if (child.text && child.text.length > 0) //Makes sure that the string isn't empty
+            paragraphRange.appendText(child.text, canvaStyles);
+
         }
-       //Makes sure it's not an empty child
+        //Makes sure it's not an empty child
         if (paragraphRange.readPlaintext().length > 0) {
           const textLength = paragraphRange.readPlaintext().length;
           paragraphRange.formatParagraph(
@@ -231,7 +290,7 @@ export const App = () => {
         await sleep(sleepTime);
         continue;
       }
-      
+
 
     }
   };
