@@ -121,9 +121,10 @@ export const App = () => {
 
     const { fonts } = await findFonts();
 
+
     const elementsPerPageLimit = 8; //Number of elements before page jump, will refractor to a more sophisticated ssystem later
     const startTopPos = 170; //Start position where to place elements
-    const startLeftPos = 65; // Start position where to place elements
+    const startLeftPos = 83; // Start position where to place elements
     const elementWidth = 695; // How much widdth the text element will have
     const elementGap = 120; // Space betwween place elements, will refractor later.
     const h1Size = 30.7;
@@ -203,7 +204,7 @@ export const App = () => {
         continue;
       }
       else if (content.type === "table") {
-        
+
 
         // const rowAmount = content.children.length;
         // const lastRow = content.children[rowAmount - 1];
@@ -214,9 +215,9 @@ export const App = () => {
         //   lastCel = lastRow.children[cellAmount - 1];
         // var colAmount = lastCel?.metadata?.col;
         // if (colAmount) colAmount += 1;
-        // if(!cellAmount) continue;
+        // if (!cellAmount) continue;
         // await notification.addToast({ messageText: rowAmount.toString() });
-        
+
         // const tableRows = [];
 
         // for (const rows of content.children) {
@@ -225,33 +226,36 @@ export const App = () => {
         //     for (const cells of rows.children) {
         //       if (cells.children)
         //         for (const cell of cells.children) {
-                
+
         //           var cellRow = cell.metadata?.row;
         //           var cellCol = cell.metadata?.col;
         //           if (cellRow && cellCol) {
         //             cellRow += 1;
         //             cellCol += 1;
-        //             }
+        //           }
         //           const textContent = cell.text || "";
         //           var fill = cellColor;
-        //           if(cellRow === 1) fill = titleRowColor;
-                
-        //           rowCells.push({ 
+        //           if (cellRow === 1) fill = titleRowColor;
+
+        //           rowCells.push({
         //             type: "string" as const,
         //             value: textContent,
         //             fillColor: titleRowColor,
         //           });
-        //           }
-                
+        //         }
+
         //     }
-        //     tableRows.push({cells: rowCells});
+        //   tableRows.push({ cells: rowCells });
         // }
 
         // const tableElement: TableElement = {
-        //   type: 'table', 
+        //   type: 'table',
         //   rows: tableRows,
         // }
         // await addElementAtPoint(tableElement);
+        // currentTopPos += elementGap;
+        // elementCount++;
+        // await sleep(sleepTime);
         continue;
 
       }
@@ -289,16 +293,16 @@ export const App = () => {
             width: elementWidth,
           });
           currentTopPos += elementGap;
-        elementCount++;
-        await sleep(sleepTime);
-        continue;
+          elementCount++;
+          await sleep(sleepTime);
+          continue;
         }
         else (paragraphRange.readPlaintext().length === 0)
         {
           continue;
         }
 
-        
+
       }
 
 
