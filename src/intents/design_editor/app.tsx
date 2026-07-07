@@ -145,6 +145,8 @@ export const App = () => {
         currentTopPos = startTopPos;
       }
       if (content.metadata?.style === "Heading1") {
+        if (content.text.length === 0)
+          continue;
         console.log("HEADING 1 DETECTED");
         await addElementAtPoint({
           type: "text",
@@ -163,7 +165,8 @@ export const App = () => {
         continue;
       } else if (content.metadata?.style === "Heading2") {
         console.log("HEADING2 DETECTED")
-
+        if (content.text.length === 0)
+          continue;
         await addElementAtPoint({
           type: "text",
           children: [content.text],
@@ -181,6 +184,8 @@ export const App = () => {
 
       }
       else if (content.metadata?.style === "Heading3") {
+        if (content.text.length === 0)
+          continue;
         console.log("HEADING3 DETECTED")
         await addElementAtPoint({
           type: "text",
@@ -197,59 +202,62 @@ export const App = () => {
         await sleep(sleepTime);
         continue;
       }
-      // else if (content.type === "table") {
-
-      //   const rowAmount = content.children.length;
-      //   const lastRow = content.children[rowAmount - 1];
-      //   const cellAmount = lastRow?.children?.length;
-
-      //   var lastCel;
-      //   if (cellAmount && lastRow.children && lastRow)
-      //     lastCel = lastRow.children[cellAmount - 1];
-      //   var colAmount = lastCel?.metadata?.col;
-      //   if (colAmount) colAmount += 1;
-      //   if(!cellAmount) continue;
-      //   await notification.addToast({ messageText: rowAmount.toString() });
-        
-      //   const tableRows = [];
-
-      //   for (const rows of content.children) {
-      //     const rowCells = [];
-      //     if (rows.children)
-      //       for (const cells of rows.children) {
-      //         if (cells.children)
-      //           for (const cell of cells.children) {
-                
-      //             var cellRow = cell.metadata?.row;
-      //             var cellCol = cell.metadata?.col;
-      //             if (cellRow && cellCol) {
-      //               cellRow += 1;
-      //               cellCol += 1;
-      //               }
-      //             const textContent = cell.text || "";
-      //             var fill = cellColor;
-      //             if(cellRow === 1) fill = titleRowColor;
-                
-      //             rowCells.push({ 
-      //               type: "string" as const,
-      //               value: textContent,
-      //               fillColor: titleRowColor,
-      //             });
-      //             }
-                
-      //       }
-      //       tableRows.push({cells: rowCells});
-      //   }
-
-      //   const tableElement: TableElement = {
-      //     type: 'table', 
-      //     rows: tableRows,
-      //   }
-      //   await addElementAtPoint(tableElement);
+      else if (content.type === "table") {
         
 
-      // }
+        // const rowAmount = content.children.length;
+        // const lastRow = content.children[rowAmount - 1];
+        // const cellAmount = lastRow?.children?.length;
+
+        // var lastCel;
+        // if (cellAmount && lastRow.children && lastRow)
+        //   lastCel = lastRow.children[cellAmount - 1];
+        // var colAmount = lastCel?.metadata?.col;
+        // if (colAmount) colAmount += 1;
+        // if(!cellAmount) continue;
+        // await notification.addToast({ messageText: rowAmount.toString() });
+        
+        // const tableRows = [];
+
+        // for (const rows of content.children) {
+        //   const rowCells = [];
+        //   if (rows.children)
+        //     for (const cells of rows.children) {
+        //       if (cells.children)
+        //         for (const cell of cells.children) {
+                
+        //           var cellRow = cell.metadata?.row;
+        //           var cellCol = cell.metadata?.col;
+        //           if (cellRow && cellCol) {
+        //             cellRow += 1;
+        //             cellCol += 1;
+        //             }
+        //           const textContent = cell.text || "";
+        //           var fill = cellColor;
+        //           if(cellRow === 1) fill = titleRowColor;
+                
+        //           rowCells.push({ 
+        //             type: "string" as const,
+        //             value: textContent,
+        //             fillColor: titleRowColor,
+        //           });
+        //           }
+                
+        //     }
+        //     tableRows.push({cells: rowCells});
+        // }
+
+        // const tableElement: TableElement = {
+        //   type: 'table', 
+        //   rows: tableRows,
+        // }
+        // await addElementAtPoint(tableElement);
+        continue;
+
+      }
       else if (!content.metadata?.style) {
+        if (content.text.length === 0)
+          continue;
 
         const paragraphRange = createRichtextRange();
 
@@ -280,15 +288,17 @@ export const App = () => {
             left: startLeftPos,
             width: elementWidth,
           });
-        }
-        else {
-          continue;
-        }
-
-        currentTopPos += elementGap;
+          currentTopPos += elementGap;
         elementCount++;
         await sleep(sleepTime);
         continue;
+        }
+        else (paragraphRange.readPlaintext().length === 0)
+        {
+          continue;
+        }
+
+        
       }
 
 
