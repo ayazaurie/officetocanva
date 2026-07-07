@@ -123,7 +123,7 @@ export const App = () => {
 
     const elementsPerPageLimit = 8; //Number of elements before page jump, will refractor to a more sophisticated ssystem later
     const startTopPos = 170; //Start position where to place elements
-    const startLeftPos = 83; // Start position where to place elements
+    const startLeftPos = 65; // Start position where to place elements
     const elementWidth = 695; // How much widdth the text element will have
     const elementGap = 120; // Space betwween place elements, will refractor later.
     const h1Size = 30.7;
@@ -197,58 +197,58 @@ export const App = () => {
         await sleep(sleepTime);
         continue;
       }
-      else if (content.type === "table") {
+      // else if (content.type === "table") {
 
-        const rowAmount = content.children.length;
-        const lastRow = content.children[rowAmount - 1];
-        const cellAmount = lastRow?.children?.length;
+      //   const rowAmount = content.children.length;
+      //   const lastRow = content.children[rowAmount - 1];
+      //   const cellAmount = lastRow?.children?.length;
 
-        var lastCel;
-        if (cellAmount && lastRow.children && lastRow)
-          lastCel = lastRow.children[cellAmount - 1];
-        var colAmount = lastCel?.metadata?.col;
-        if (colAmount) colAmount += 1;
-        if(!cellAmount) continue;
-        await notification.addToast({ messageText: rowAmount.toString() });
+      //   var lastCel;
+      //   if (cellAmount && lastRow.children && lastRow)
+      //     lastCel = lastRow.children[cellAmount - 1];
+      //   var colAmount = lastCel?.metadata?.col;
+      //   if (colAmount) colAmount += 1;
+      //   if(!cellAmount) continue;
+      //   await notification.addToast({ messageText: rowAmount.toString() });
         
-        const tableRows = [];
+      //   const tableRows = [];
 
-        for (const rows of content.children) {
-          const rowCells = [];
-          if (rows.children)
-            for (const cells of rows.children) {
-              if (cells.children)
-                for (const cell of cells.children) {
+      //   for (const rows of content.children) {
+      //     const rowCells = [];
+      //     if (rows.children)
+      //       for (const cells of rows.children) {
+      //         if (cells.children)
+      //           for (const cell of cells.children) {
                 
-                  var cellRow = cell.metadata?.row;
-                  var cellCol = cell.metadata?.col;
-                  if (cellRow && cellCol) {
-                    cellRow += 1;
-                    cellCol += 1;
-                    }
-                  const textContent = cell.text || "";
-                  var fill = cellColor;
-                  if(cellRow === 1) fill = titleRowColor;
+      //             var cellRow = cell.metadata?.row;
+      //             var cellCol = cell.metadata?.col;
+      //             if (cellRow && cellCol) {
+      //               cellRow += 1;
+      //               cellCol += 1;
+      //               }
+      //             const textContent = cell.text || "";
+      //             var fill = cellColor;
+      //             if(cellRow === 1) fill = titleRowColor;
                 
-                  rowCells.push({ 
-                    type: "string" as const,
-                    value: textContent,
-                    fillColor: titleRowColor,
-                  });
-                  }
+      //             rowCells.push({ 
+      //               type: "string" as const,
+      //               value: textContent,
+      //               fillColor: titleRowColor,
+      //             });
+      //             }
                 
-            }
-            tableRows.push({cells: rowCells});
-        }
+      //       }
+      //       tableRows.push({cells: rowCells});
+      //   }
 
-        const tableElement: TableElement = {
-          type: 'table', 
-          rows: tableRows,
-        }
-        await addElementAtPoint(tableElement);
+      //   const tableElement: TableElement = {
+      //     type: 'table', 
+      //     rows: tableRows,
+      //   }
+      //   await addElementAtPoint(tableElement);
         
 
-      }
+      // }
       else if (!content.metadata?.style) {
 
         const paragraphRange = createRichtextRange();
