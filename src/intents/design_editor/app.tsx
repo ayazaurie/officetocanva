@@ -10,7 +10,7 @@ import {
   createRichtextRange,
 
 } from "@canva/design";
-import { requestOpenExternalUrl } from "@canva/platform";
+import { requestOpenExternalUrl, notification } from "@canva/platform";
 import { FormattedMessage, useIntl } from "react-intl";
 import * as styles from "styles/components.css";
 import { useState, useEffect } from "react";
@@ -20,7 +20,7 @@ export const DOCS_URL = "https://www.canva.dev/docs/apps/";
 
 interface DocumentChildren {
   type: string;
-  text: string;
+  text?: string;
   formatting?: {
     bold?: boolean;
     italic?: boolean;
@@ -110,31 +110,31 @@ export const App = () => {
 
   const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
+  // Main app, have to refractor into better arquitecture
   const jsonToCanva = async (parsedData: DocumentParagraph[]) => {
 
 
     const { fonts } = await findFonts();
 
-    const elementsPerPageLimit = 5;
-    const startTopPos = 170;
-    const startLeftPos = 83;
-    const elementWidth = 695;
-    const elementGap = 120;
-    const h1Size = 30.7;
+    const elementsPerPageLimit = 8; //Number of elements before page jump, will refractor to a more sophisticated ssystem later
+    const startTopPos = 170; //Start position where to place elements
+    const startLeftPos = 83; // Start position where to place elements
+    const elementWidth = 695; // How much widdth the text element will have
+    const elementGap = 120; // Space betwween place elements, will refractor later.
+    const h1Size = 30.7; 
     const h2Size = 17.3;
     const textSize = 17.3;
 
     let elementCount = 0;
     let currentTopPos = startTopPos;
+    //Canva has a limit of 20 editor requests every 10 seconds, timer is to not trigger failsafe.
     const sleepTime = 501;
-
 
     for (const content of parsedData) {
       if (content.type !== "paragraph" && content.type !== "heading" && content.type !== "table") continue;
       if (elementCount > 0 && elementCount % elementsPerPageLimit === 0) {
         await addPage();
         await sleep(sleepTime);
-        
         currentTopPos = startTopPos;
       }
       if (content.metadata?.style === "Heading1") {
@@ -191,53 +191,47 @@ export const App = () => {
         continue;
       }
       else if (!content.metadata?.style) {
-        console.log("TEXT DETECTED");
-        // const paragraphRange = createRichtextRange();
-        // for (const child of content.children) {
-        //   const canvaStyles: InlineFormatting = {};
-        //   if (child.formatting) {
-        //     if (child.formatting.bold) {
-        //       canvaStyles.fontWeight = "bold";
-        //     }
-        //     if (child.formatting.italic) {
-        //       canvaStyles.fontStyle = "italic";
-        //     }
 
-        //   }
+        const paragraphRange = createRichtextRange();
+        
+        for (const child of content.children) {
+          //If the child's formatting has bold/italic, style it's text as bold/italic, otherwise make it normal text
+          const canvaStyles: InlineFormatting = {
+            fontWeight: child.formatting?.bold ? "bold" : "normal",
+            fontStyle: child.formatting?.italic ? "italic" : "normal",
+          };
 
-        //   paragraphRange.appendText(child.text, canvaStyles);
-        //   const textLength = paragraphRange.readPlaintext().length;
-        //   paragraphRange.formatParagraph(
-        //     { index: 0, length: textLength },
-        //     {
-        //       fontSize: textSize,
-        //     },
-        //   );
-        // }
-        // await addElementAtPoint({
-        //   type: "richtext",
-        //   range: paragraphRange,
-        //   top: currentTopPos,
-        //   left: startLeftPos,
-        //   width: elementWidth,
-        // });
-         addElementAtPoint({
-          type: "text",
-          children: [content.text],
-          fontSize: h2Size,
+          if(child.text && child.text.length > 0) //Makes sure that the string isn't empty
+          paragraphRange.appendText(child.text, canvaStyles);
+        
+        }
+       //Makes sure it's not an empty child
+        if (paragraphRange.readPlaintext().length > 0) {
+          const textLength = paragraphRange.readPlaintext().length;
+          paragraphRange.formatParagraph(
+            { index: 0, length: textLength },
+            {
+              fontSize: textSize,
+            },
+          );
+          await addElementAtPoint({
+            type: "richtext",
+            range: paragraphRange,
+            top: currentTopPos,
+            left: startLeftPos,
+            width: elementWidth,
+          });
+        }
+        else {
+          continue;
+        }
 
-          textAlign: "start",
-          top: currentTopPos,
-          left: startLeftPos,
-          width: elementWidth,
-        });
         currentTopPos += elementGap;
         elementCount++;
         await sleep(sleepTime);
         continue;
-
       }
-
+      
 
     }
   };
