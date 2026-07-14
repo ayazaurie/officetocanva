@@ -97,6 +97,10 @@
     "version": "2.4.0"
   },
   "allowScripts": {
-    "officeparser@7.2.1": true
+    "officeparser@7.2.1": true,
+    "core-js-pure@3.49.0": true,
+    "esbuild@0.28.1": true,
+    "tesseract.js@7.0.0": true,
+    "unrs-resolver@1.11.1": true
   }
 }

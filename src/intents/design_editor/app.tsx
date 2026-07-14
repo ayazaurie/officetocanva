@@ -145,10 +145,9 @@ export const App = () => {
         await sleep(sleepTime);
         currentTopPos = startTopPos;
       }
-      if (content.metadata?.style === "Heading1") {
+      if (content.metadata?.style === "Heading1" || content.metadata?.style === "Ttulo1" || content.metadata?.style === "Ttulo1Car") {
         if (content.text.length === 0)
           continue;
-        console.log("HEADING 1 DETECTED");
         await addElementAtPoint({
           type: "text",
           children: [content.text],
@@ -164,7 +163,7 @@ export const App = () => {
         await sleep(sleepTime);
 
         continue;
-      } else if (content.metadata?.style === "Heading2") {
+      } else if (content.metadata?.style === "Heading2" || content.metadata?.style === "Ttulo2") {
         console.log("HEADING2 DETECTED")
         if (content.text.length === 0)
           continue;
@@ -184,7 +183,7 @@ export const App = () => {
         continue;
 
       }
-      else if (content.metadata?.style === "Heading3") {
+      else if (content.metadata?.style === "Heading3" || content.metadata?.style === "Ttulo3") {
         if (content.text.length === 0)
           continue;
         console.log("HEADING3 DETECTED")
