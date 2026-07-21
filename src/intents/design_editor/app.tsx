@@ -1,6 +1,6 @@
-import { useFeatureSupport, useSelection, } from "@canva/app-hooks";
+import { useFeatureSupport, useSelection } from "@canva/app-hooks";
 import React, { useRef } from "react";
-import { Button, Rows, Text } from "@canva/app-ui-kit";
+import { Button, FileInput, FileInputItem, Rows, Text } from "@canva/app-ui-kit";
 import type { DesignEditing, InlineFormatting } from "@canva/design";
 import {
   openDesign,
@@ -16,8 +16,6 @@ import { FormattedMessage, useIntl } from "react-intl";
 import * as styles from "styles/components.css";
 import { useState, useEffect } from "react";
 import { findFonts } from "@canva/asset";
-
-
 
 export const DOCS_URL = "https://www.canva.dev/docs/apps/";
 
@@ -60,6 +58,16 @@ export const App = () => {
   const [operation, setOperation] = useState<Operation>(Operation.NONE);
   const [error, setError] = useState<string | undefined>(undefined);
 
+  const [file, setFile] = useState<File | null>(null);
+
+  const handleDropAcceptedFiles = (acceptedFiles : File[]) => {
+    setFile(acceptedFiles[0] ?? null)
+  };
+
+  const handleDeleteFile = () => {
+    setFile(null);
+  }
+
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const handlebuttonClick = () => {
     fileInputRef.current?.click();
@@ -96,12 +104,6 @@ export const App = () => {
     reader.readAsText(file);
   };
 
-  async function checkPageCompatibility() {
-    await openDesign({ type: "current_page" }, async (session) => {
-      console.log(`The current page is ${session.page.type}`);
-    });
-  }
-
   const openExternalUrl = async (url: string) => {
     const response = await requestOpenExternalUrl({
       url,
@@ -114,12 +116,11 @@ export const App = () => {
 
   const intl = useIntl();
 
-  const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+  const sleep = (ms: number) =>
+    new Promise((resolve) => setTimeout(resolve, ms));
 
   // Main app, have to refractor into better arquitecture
   const jsonToCanva = async (parsedData: DocumentParagraph[]) => {
-
-
     const { fonts } = await findFonts();
 
     //Canva conversion to cm: 3.608695652 i have no clue why, I forget where i got these numbers from, but it works!
@@ -127,7 +128,7 @@ export const App = () => {
     const startTopPos = 170; //Start position where to place elements
     const startLeftPos = 54; // Start position where to place elements
     const elementWidth = 724; // How much widdth the text element will have
-    const elementGap = 120;//120; // Space betwween place elements, will refractor later.
+    const elementGap = 120; //120; // Space betwween place elements, will refractor later.
     const h1Size = 30.7; //30.7 og
     const h2Size = 17.3;
     const textSize = 17.3;
@@ -140,15 +141,23 @@ export const App = () => {
     const sleepTime = 501;
 
     for (const content of parsedData) {
-      if (content.type !== "paragraph" && content.type !== "heading" && content.type !== "table") continue;
+      if (
+        content.type !== "paragraph" &&
+        content.type !== "heading" &&
+        content.type !== "table"
+      )
+        continue;
       if (elementCount > 0 && elementCount % elementsPerPageLimit === 0) {
         await addPage();
         await sleep(sleepTime);
         currentTopPos = startTopPos;
       }
-      if (content.metadata?.style === "Heading1" || content.metadata?.style === "Ttulo1" || content.metadata?.style === "Ttulo1Car") {
-        if (content.text.length === 0)
-          continue;
+      if (
+        content.metadata?.style === "Heading1" ||
+        content.metadata?.style === "Ttulo1" ||
+        content.metadata?.style === "Ttulo1Car"
+      ) {
+        if (content.text.length === 0) continue;
         await addElementAtPoint({
           type: "text",
           children: [content.text],
@@ -164,10 +173,12 @@ export const App = () => {
         await sleep(sleepTime);
 
         continue;
-      } else if (content.metadata?.style === "Heading2" || content.metadata?.style === "Ttulo2") {
-        console.log("HEADING2 DETECTED")
-        if (content.text.length === 0)
-          continue;
+      } else if (
+        content.metadata?.style === "Heading2" ||
+        content.metadata?.style === "Ttulo2"
+      ) {
+        console.log("HEADING2 DETECTED");
+        if (content.text.length === 0) continue;
         await addElementAtPoint({
           type: "text",
           children: [content.text],
@@ -182,12 +193,12 @@ export const App = () => {
         elementCount++;
         await sleep(sleepTime);
         continue;
-
-      }
-      else if (content.metadata?.style === "Heading3" || content.metadata?.style === "Ttulo3") {
-        if (content.text.length === 0)
-          continue;
-        console.log("HEADING3 DETECTED")
+      } else if (
+        content.metadata?.style === "Heading3" ||
+        content.metadata?.style === "Ttulo3"
+      ) {
+        if (content.text.length === 0) continue;
+        console.log("HEADING3 DETECTED");
         await addElementAtPoint({
           type: "text",
           children: [content.text],
@@ -202,10 +213,7 @@ export const App = () => {
         elementCount++;
         await sleep(sleepTime);
         continue;
-      }
-      else if (content.type === "table") {
-
-
+      } else if (content.type === "table") {
         // const rowAmount = content.children.length;
         // const lastRow = content.children[rowAmount - 1];
         // const cellAmount = lastRow?.children?.length;
@@ -257,11 +265,8 @@ export const App = () => {
         // elementCount++;
         // await sleep(sleepTime);
         continue;
-
-      }
-      else if (!content.metadata?.style) {
-        if (content.text.length === 0)
-          continue;
+      } else if (!content.metadata?.style) {
+        if (content.text.length === 0) continue;
 
         const paragraphRange = createRichtextRange();
 
@@ -272,11 +277,11 @@ export const App = () => {
             fontStyle: child.formatting?.italic ? "italic" : "normal",
           };
 
-          if (child.text && child.text.length > 0) //Makes sure that the string isn't empty
+          if (child.text && child.text.length > 0)
+            //Makes sure that the string isn't empty
             paragraphRange.appendText(child.text, canvaStyles);
-
         }
-      
+
         if (paragraphRange.readPlaintext().length > 0) {
           const textLength = paragraphRange.readPlaintext().length;
           paragraphRange.formatParagraph(
@@ -296,28 +301,15 @@ export const App = () => {
           elementCount++;
           await sleep(sleepTime);
           continue;
-        }
-        else if (paragraphRange.readPlaintext().length === 0)
-        {
+        } else if (paragraphRange.readPlaintext().length === 0) {
           continue;
         }
-
-
       }
-
-
     }
   };
 
   return (
     <div className={styles.scrollContainer}>
-      <input
-        type="file"
-        ref={fileInputRef}
-        onChange={onFileChange}
-        style={{ display: "none" }}
-        accept=".json"
-      />
       <Rows spacing="2u">
         <Text>
           <FormattedMessage
@@ -330,6 +322,16 @@ export const App = () => {
             }}
           />
         </Text>
+        <FileInput 
+        accept={[".docx,"]} 
+        onDropAcceptedFiles={handleDropAcceptedFiles}
+        />
+        {file &&(
+        <FileInputItem
+          label = {file.name}
+          onDeleteClick = {handleDeleteFile}
+        />
+      )}
         <Button
           variant="primary"
           onClick={onClick}
@@ -337,11 +339,11 @@ export const App = () => {
           tooltipLabel={
             !addElement
               ? intl.formatMessage({
-                defaultMessage:
-                  "This feature is not supported in the current page",
-                description:
-                  "Tooltip label for when a feature is not supported in the current design",
-              })
+                  defaultMessage:
+                    "This feature is not supported in the current page",
+                  description:
+                    "Tooltip label for when a feature is not supported in the current design",
+                })
               : undefined
           }
           stretch
@@ -350,13 +352,6 @@ export const App = () => {
             defaultMessage: "Choose .json document",
             description:
               "Button text to do something cool. Creates a new text element when pressed.",
-          })}
-        </Button>
-        <Button variant="secondary" onClick={() => openExternalUrl(DOCS_URL)}>
-          {intl.formatMessage({
-            defaultMessage: "Open Canva Apps SDK docs",
-            description:
-              "Button text to open Canva Apps SDK docs. Opens an external URL when pressed.",
           })}
         </Button>
       </Rows>
