@@ -1,4 +1,4 @@
-import { useFeatureSupport, useSelection, useTable } from "@canva/app-hooks";
+import { useFeatureSupport, useSelection, } from "@canva/app-hooks";
 import React, { useRef } from "react";
 import { Button, Rows, Text } from "@canva/app-ui-kit";
 import type { DesignEditing, InlineFormatting } from "@canva/design";
@@ -16,6 +16,7 @@ import { FormattedMessage, useIntl } from "react-intl";
 import * as styles from "styles/components.css";
 import { useState, useEffect } from "react";
 import { findFonts } from "@canva/asset";
+
 
 
 export const DOCS_URL = "https://www.canva.dev/docs/apps/";
@@ -121,13 +122,13 @@ export const App = () => {
 
     const { fonts } = await findFonts();
 
-
+    //Canva conversion to cm: 3.608695652 i have no clue why, I forget where i got these numbers from, but it works!
     const elementsPerPageLimit = 8; //Number of elements before page jump, will refractor to a more sophisticated ssystem later
     const startTopPos = 170; //Start position where to place elements
-    const startLeftPos = 83; // Start position where to place elements
-    const elementWidth = 695; // How much widdth the text element will have
-    const elementGap = 120; // Space betwween place elements, will refractor later.
-    const h1Size = 30.7;
+    const startLeftPos = 54; // Start position where to place elements
+    const elementWidth = 724; // How much widdth the text element will have
+    const elementGap = 120;//120; // Space betwween place elements, will refractor later.
+    const h1Size = 30.7; //30.7 og
     const h2Size = 17.3;
     const textSize = 17.3;
     const titleRowColor = "#102b42";
@@ -275,7 +276,7 @@ export const App = () => {
             paragraphRange.appendText(child.text, canvaStyles);
 
         }
-        //Makes sure it's not an empty child
+      
         if (paragraphRange.readPlaintext().length > 0) {
           const textLength = paragraphRange.readPlaintext().length;
           paragraphRange.formatParagraph(
@@ -296,7 +297,7 @@ export const App = () => {
           await sleep(sleepTime);
           continue;
         }
-        else (paragraphRange.readPlaintext().length === 0)
+        else if (paragraphRange.readPlaintext().length === 0)
         {
           continue;
         }
