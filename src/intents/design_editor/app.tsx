@@ -1,6 +1,12 @@
 import { useFeatureSupport, useSelection } from "@canva/app-hooks";
 import React, { useRef } from "react";
-import { Button, FileInput, FileInputItem, Rows, Text } from "@canva/app-ui-kit";
+import {
+  Button,
+  FileInput,
+  FileInputItem,
+  Rows,
+  Text,
+} from "@canva/app-ui-kit";
 import type { DesignEditing, InlineFormatting } from "@canva/design";
 import {
   openDesign,
@@ -59,19 +65,22 @@ export const App = () => {
   const [error, setError] = useState<string | undefined>(undefined);
 
   const [file, setFile] = useState<File | null>(null);
+  
 
-  const handleDropAcceptedFiles = (acceptedFiles : File[]) => {
-    setFile(acceptedFiles[0] ?? null)
+  const handleDropAcceptedFiles = (acceptedFiles: File[]) => {
+    
+    setFile(acceptedFiles[0] ?? null);
+    
   };
 
   const handleDeleteFile = () => {
     setFile(null);
-  }
-
-  const fileInputRef = useRef<HTMLInputElement | null>(null);
-  const handlebuttonClick = () => {
-    fileInputRef.current?.click();
   };
+
+  // const fileInputRef = useRef<HTMLInputElement | null>(null);
+  // const handlebuttonClick = () => {
+  //   fileInputRef.current?.click();
+  // };
 
   const isSupported = useFeatureSupport();
   const addElement = [addElementAtPoint, addElementAtCursor].find((fn) =>
@@ -79,30 +88,30 @@ export const App = () => {
   );
 
   const onClick = () => {
-    if (fileInputRef.current) {
-      fileInputRef.current.value = "";
-      fileInputRef.current.click();
-    }
+    // if (fileInputRef.current) {
+    //   fileInputRef.current.value = "";
+    //   fileInputRef.current.click();
+    // }
   };
 
-  const onFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (!file) return;
+  // const onFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    // const file = event.target.files?.[0];
+    // if (!file) return;
 
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const jsonString = e.target?.result as string;
-      try {
-        const parsedata = JSON.parse(jsonString);
-        const contentArray = parsedata.content as DocumentParagraph[];
-        jsonToCanva(contentArray);
-      } catch (error) {
-        console.error("Error parsing JSON:", error);
-      }
-    };
+    // const reader = new FileReader();
+    // reader.onload = (e) => {
+    //   const jsonString = e.target?.result as string;
+    //   try {
+    //     const parsedata = JSON.parse(jsonString);
+    //     const contentArray = parsedata.content as DocumentParagraph[];
+    //     jsonToCanva(contentArray);
+    //   } catch (error) {
+    //     console.error("Error parsing JSON:", error);
+    //   }
+    // };
 
-    reader.readAsText(file);
-  };
+    // reader.readAsText(file);
+  // };
 
   const openExternalUrl = async (url: string) => {
     const response = await requestOpenExternalUrl({
@@ -322,16 +331,15 @@ export const App = () => {
             }}
           />
         </Text>
-        <FileInput 
-        accept={[".docx,"]} 
-        onDropAcceptedFiles={handleDropAcceptedFiles}
+        <FileInput
+          accept={[".docx"]}
+          id="mainInput"
+          onDropAcceptedFiles={handleDropAcceptedFiles}
         />
-        {file &&(
-        <FileInputItem
-          label = {file.name}
-          onDeleteClick = {handleDeleteFile}
-        />
-      )}
+       
+        {file && (
+          <FileInputItem label={file.name} onDeleteClick={handleDeleteFile} />
+        )}
         <Button
           variant="primary"
           onClick={onClick}
