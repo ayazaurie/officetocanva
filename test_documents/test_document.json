@@ -1,0 +1,1087 @@
+{
+  "config": {
+    "outputErrorToConsole": false,
+    "newlineDelimiter": "\n",
+    "ignoreNotes": false,
+    "ignoreComments": false,
+    "ignoreHeadersAndFooters": false,
+    "ignoreSlideMasters": false,
+    "putNotesAtLast": false,
+    "extractAttachments": false,
+    "includeRawContent": false,
+    "ocr": false,
+    "ocrLanguage": "eng",
+    "ocrConfig": {
+      "language": "eng",
+      "workerPath": "",
+      "corePath": "",
+      "langPath": "",
+      "timeout": {
+        "autoTerminate": 10000,
+        "workerLoad": 60000,
+        "recognition": 30000
+      },
+      "autoTerminateTimeout": 10000,
+      "abortSignal": null
+    },
+    "abortSignal": null,
+    "serializeRawContent": true,
+    "preserveXmlWhitespace": false,
+    "pdfWorkerSrc": "https://cdn.jsdelivr.net/npm/pdfjs-dist@5.6.205/build/pdf.worker.min.mjs",
+    "includeBreakNodes": false,
+    "ignoreInternalLinks": false,
+    "fileType": null,
+    "csvDelimiter": ","
+  },
+  "type": "docx",
+  "metadata": {
+    "nativeProperties": {
+      "Template": "",
+      "TotalTime": 3,
+      "Application": "LibreOffice/26.2.4.2$Linux_X86_64 LibreOffice_project/620$Build-2",
+      "AppVersion": 15,
+      "Pages": 1,
+      "Words": 68,
+      "Characters": 284,
+      "CharactersWithSpaces": 324,
+      "Paragraphs": 24
+    },
+    "created": "2026-07-29T07:58:45.000Z",
+    "modified": "2026-07-29T08:02:11.000Z",
+    "pages": 1,
+    "formatting": {
+      "size": "12pt",
+      "font": "Liberation Serif"
+    },
+    "styleMap": {
+      "Normal": {
+        "formatting": {
+          "size": "12pt",
+          "font": "Liberation Serif"
+        }
+      },
+      "Heading1": {
+        "formatting": {
+          "bold": true,
+          "size": "18pt"
+        }
+      },
+      "Heading2": {
+        "formatting": {
+          "bold": true,
+          "size": "16pt"
+        }
+      },
+      "NumberingSymbols": {
+        "formatting": {}
+      },
+      "Bullets": {
+        "formatting": {
+          "font": "OpenSymbol"
+        }
+      },
+      "Heading": {
+        "formatting": {
+          "size": "14pt",
+          "font": "Liberation Sans"
+        }
+      },
+      "BodyText": {
+        "formatting": {}
+      },
+      "List": {
+        "formatting": {}
+      },
+      "Caption": {
+        "formatting": {
+          "italic": true,
+          "size": "12pt"
+        }
+      },
+      "Index": {
+        "formatting": {}
+      },
+      "TableContents": {
+        "formatting": {}
+      }
+    }
+  },
+  "content": [
+    {
+      "type": "heading",
+      "text": "Test H1",
+      "children": [
+        {
+          "type": "text",
+          "text": "Test H1",
+          "formatting": {
+            "bold": true,
+            "size": "18pt"
+          },
+          "metadata": {
+            "style": "Heading1"
+          }
+        }
+      ],
+      "metadata": {
+        "level": 1,
+        "paragraphIndentation": {
+          "left": 0,
+          "hanging": 0
+        },
+        "style": "Heading1"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": "",
+      "children": [],
+      "metadata": {
+        "style": "BodyText"
+      }
+    },
+    {
+      "type": "heading",
+      "text": "Test H2",
+      "children": [
+        {
+          "type": "text",
+          "text": "Test H2",
+          "formatting": {
+            "bold": true,
+            "size": "16pt"
+          },
+          "metadata": {
+            "style": "Heading2"
+          }
+        }
+      ],
+      "metadata": {
+        "level": 2,
+        "paragraphIndentation": {
+          "left": 0,
+          "hanging": 0
+        },
+        "style": "Heading2"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": "",
+      "children": [],
+      "metadata": {
+        "style": "BodyText"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": "Test regular text",
+      "children": [
+        {
+          "type": "text",
+          "text": "Test regular text",
+          "formatting": {},
+          "metadata": {
+            "style": "BodyText"
+          }
+        }
+      ],
+      "metadata": {
+        "style": "BodyText"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": "",
+      "children": [],
+      "metadata": {
+        "style": "BodyText"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": "Test rich text",
+      "children": [
+        {
+          "type": "text",
+          "text": "Test ",
+          "formatting": {},
+          "metadata": {
+            "style": "BodyText"
+          }
+        },
+        {
+          "type": "text",
+          "text": "rich",
+          "formatting": {
+            "bold": true
+          },
+          "metadata": {
+            "style": "BodyText"
+          }
+        },
+        {
+          "type": "text",
+          "text": " text",
+          "formatting": {},
+          "metadata": {
+            "style": "BodyText"
+          }
+        }
+      ],
+      "metadata": {
+        "style": "BodyText"
+      }
+    },
+    {
+      "type": "list",
+      "text": "Ordered list item 1",
+      "children": [
+        {
+          "type": "text",
+          "text": "Ordered list item 1",
+          "formatting": {},
+          "metadata": {
+            "style": "BodyText"
+          }
+        }
+      ],
+      "metadata": {
+        "listType": "ordered",
+        "indentation": 0,
+        "alignment": "left",
+        "listId": "2",
+        "itemIndex": 0,
+        "style": "BodyText"
+      }
+    },
+    {
+      "type": "list",
+      "text": "Ordered list item 2",
+      "children": [
+        {
+          "type": "text",
+          "text": "Ordered list item 2",
+          "formatting": {},
+          "metadata": {
+            "style": "BodyText"
+          }
+        }
+      ],
+      "metadata": {
+        "listType": "ordered",
+        "indentation": 0,
+        "alignment": "left",
+        "listId": "2",
+        "itemIndex": 1,
+        "style": "BodyText"
+      }
+    },
+    {
+      "type": "list",
+      "text": "Ordered list item 3",
+      "children": [
+        {
+          "type": "text",
+          "text": "Ordered list item 3",
+          "formatting": {},
+          "metadata": {
+            "style": "BodyText"
+          }
+        }
+      ],
+      "metadata": {
+        "listType": "ordered",
+        "indentation": 0,
+        "alignment": "left",
+        "listId": "2",
+        "itemIndex": 2,
+        "style": "BodyText"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": "",
+      "children": [],
+      "metadata": {
+        "style": "BodyText"
+      }
+    },
+    {
+      "type": "list",
+      "text": "Unordered list item A",
+      "children": [
+        {
+          "type": "text",
+          "text": "Unordered list item A",
+          "formatting": {},
+          "metadata": {
+            "style": "BodyText"
+          }
+        }
+      ],
+      "metadata": {
+        "listType": "unordered",
+        "indentation": 0,
+        "alignment": "left",
+        "listId": "3",
+        "itemIndex": 0,
+        "style": "BodyText"
+      }
+    },
+    {
+      "type": "list",
+      "text": "Unordered list item B",
+      "children": [
+        {
+          "type": "text",
+          "text": "Unordered list item B",
+          "formatting": {},
+          "metadata": {
+            "style": "BodyText"
+          }
+        }
+      ],
+      "metadata": {
+        "listType": "unordered",
+        "indentation": 0,
+        "alignment": "left",
+        "listId": "3",
+        "itemIndex": 1,
+        "style": "BodyText"
+      }
+    },
+    {
+      "type": "list",
+      "text": "Unordered list item C",
+      "children": [
+        {
+          "type": "text",
+          "text": "Unordered list item C",
+          "formatting": {},
+          "metadata": {
+            "style": "BodyText"
+          }
+        }
+      ],
+      "metadata": {
+        "listType": "unordered",
+        "indentation": 0,
+        "alignment": "left",
+        "listId": "3",
+        "itemIndex": 2,
+        "style": "BodyText"
+      }
+    },
+    {
+      "type": "paragraph",
+      "text": "",
+      "children": [],
+      "metadata": {
+        "style": "BodyText"
+      }
+    },
+    {
+      "type": "table",
+      "children": [
+        {
+          "type": "row",
+          "children": [
+            {
+              "type": "cell",
+              "text": "Table",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Table",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "Table",
+                      "formatting": {},
+                      "metadata": {
+                        "style": "TableContents"
+                      }
+                    }
+                  ],
+                  "metadata": {
+                    "style": "TableContents"
+                  }
+                }
+              ],
+              "metadata": {
+                "row": 0,
+                "col": 0
+              }
+            },
+            {
+              "type": "cell",
+              "text": "asdas",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "asdas",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "asdas",
+                      "formatting": {},
+                      "metadata": {
+                        "style": "TableContents"
+                      }
+                    }
+                  ],
+                  "metadata": {
+                    "style": "TableContents"
+                  }
+                }
+              ],
+              "metadata": {
+                "row": 0,
+                "col": 1
+              }
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "",
+                  "children": [],
+                  "metadata": {
+                    "style": "TableContents"
+                  }
+                }
+              ],
+              "metadata": {
+                "row": 0,
+                "col": 2
+              }
+            },
+            {
+              "type": "cell",
+              "text": "sssda",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "sssda",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "sssda",
+                      "formatting": {},
+                      "metadata": {
+                        "style": "TableContents"
+                      }
+                    }
+                  ],
+                  "metadata": {
+                    "style": "TableContents"
+                  }
+                }
+              ],
+              "metadata": {
+                "row": 0,
+                "col": 3
+              }
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "",
+                  "children": [],
+                  "metadata": {
+                    "style": "TableContents"
+                  }
+                }
+              ],
+              "metadata": {
+                "row": 0,
+                "col": 4
+              }
+            }
+          ]
+        },
+        {
+          "type": "row",
+          "children": [
+            {
+              "type": "cell",
+              "text": "",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "",
+                  "children": [],
+                  "metadata": {
+                    "style": "TableContents"
+                  }
+                }
+              ],
+              "metadata": {
+                "row": 1,
+                "col": 0
+              }
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "",
+                  "children": [],
+                  "metadata": {
+                    "style": "TableContents"
+                  }
+                }
+              ],
+              "metadata": {
+                "row": 1,
+                "col": 1
+              }
+            },
+            {
+              "type": "cell",
+              "text": "s",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "s",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "s",
+                      "formatting": {},
+                      "metadata": {
+                        "style": "TableContents"
+                      }
+                    }
+                  ],
+                  "metadata": {
+                    "style": "TableContents"
+                  }
+                }
+              ],
+              "metadata": {
+                "row": 1,
+                "col": 2
+              }
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "",
+                  "children": [],
+                  "metadata": {
+                    "style": "TableContents"
+                  }
+                }
+              ],
+              "metadata": {
+                "row": 1,
+                "col": 3
+              }
+            },
+            {
+              "type": "cell",
+              "text": "asasdasdasd",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "asasdasdasd",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "as",
+                      "formatting": {},
+                      "metadata": {
+                        "style": "TableContents"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "text": "asd",
+                      "formatting": {
+                        "bold": true
+                      },
+                      "metadata": {
+                        "style": "TableContents"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "text": "asdasd",
+                      "formatting": {},
+                      "metadata": {
+                        "style": "TableContents"
+                      }
+                    }
+                  ],
+                  "metadata": {
+                    "style": "TableContents"
+                  }
+                }
+              ],
+              "metadata": {
+                "row": 1,
+                "col": 4
+              }
+            }
+          ]
+        },
+        {
+          "type": "row",
+          "children": [
+            {
+              "type": "cell",
+              "text": " W wefdasdsaas",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": " W wefdasdsaas",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": " ",
+                      "formatting": {},
+                      "metadata": {
+                        "style": "TableContents"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "text": "W wefdasdsaas",
+                      "formatting": {},
+                      "metadata": {
+                        "style": "TableContents"
+                      }
+                    }
+                  ],
+                  "metadata": {
+                    "style": "TableContents"
+                  }
+                }
+              ],
+              "metadata": {
+                "row": 2,
+                "col": 0
+              }
+            },
+            {
+              "type": "cell",
+              "text": " We rw",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": " We rw",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": " ",
+                      "formatting": {},
+                      "metadata": {
+                        "style": "TableContents"
+                      }
+                    },
+                    {
+                      "type": "text",
+                      "text": "We rw",
+                      "formatting": {},
+                      "metadata": {
+                        "style": "TableContents"
+                      }
+                    }
+                  ],
+                  "metadata": {
+                    "style": "TableContents"
+                  }
+                }
+              ],
+              "metadata": {
+                "row": 2,
+                "col": 1
+              }
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "",
+                  "children": [],
+                  "metadata": {
+                    "style": "TableContents"
+                  }
+                }
+              ],
+              "metadata": {
+                "row": 2,
+                "col": 2
+              }
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "",
+                  "children": [],
+                  "metadata": {
+                    "style": "TableContents"
+                  }
+                }
+              ],
+              "metadata": {
+                "row": 2,
+                "col": 3
+              }
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "",
+                  "children": [],
+                  "metadata": {
+                    "style": "TableContents"
+                  }
+                }
+              ],
+              "metadata": {
+                "row": 2,
+                "col": 4
+              }
+            }
+          ]
+        },
+        {
+          "type": "row",
+          "children": [
+            {
+              "type": "cell",
+              "text": "",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "",
+                  "children": [],
+                  "metadata": {
+                    "style": "TableContents"
+                  }
+                }
+              ],
+              "metadata": {
+                "row": 3,
+                "col": 0
+              }
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "",
+                  "children": [],
+                  "metadata": {
+                    "style": "TableContents"
+                  }
+                }
+              ],
+              "metadata": {
+                "row": 3,
+                "col": 1
+              }
+            },
+            {
+              "type": "cell",
+              "text": "sa",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "sa",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "sa",
+                      "formatting": {},
+                      "metadata": {
+                        "style": "TableContents"
+                      }
+                    }
+                  ],
+                  "metadata": {
+                    "style": "TableContents"
+                  }
+                }
+              ],
+              "metadata": {
+                "row": 3,
+                "col": 2
+              }
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "",
+                  "children": [],
+                  "metadata": {
+                    "style": "TableContents"
+                  }
+                }
+              ],
+              "metadata": {
+                "row": 3,
+                "col": 3
+              }
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "",
+                  "children": [],
+                  "metadata": {
+                    "style": "TableContents"
+                  }
+                }
+              ],
+              "metadata": {
+                "row": 3,
+                "col": 4
+              }
+            }
+          ]
+        },
+        {
+          "type": "row",
+          "children": [
+            {
+              "type": "cell",
+              "text": "aasgghheh",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "aasgghheh",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "aasgghheh",
+                      "formatting": {},
+                      "metadata": {
+                        "style": "TableContents"
+                      }
+                    }
+                  ],
+                  "metadata": {
+                    "style": "TableContents"
+                  }
+                }
+              ],
+              "metadata": {
+                "row": 4,
+                "col": 0
+              }
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "",
+                  "children": [],
+                  "metadata": {
+                    "style": "TableContents"
+                  }
+                }
+              ],
+              "metadata": {
+                "row": 4,
+                "col": 1
+              }
+            },
+            {
+              "type": "cell",
+              "text": "asdasda",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "asdasda",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "asdasda",
+                      "formatting": {},
+                      "metadata": {
+                        "style": "TableContents"
+                      }
+                    }
+                  ],
+                  "metadata": {
+                    "style": "TableContents"
+                  }
+                }
+              ],
+              "metadata": {
+                "row": 4,
+                "col": 2
+              }
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "",
+                  "children": [],
+                  "metadata": {
+                    "style": "TableContents"
+                  }
+                }
+              ],
+              "metadata": {
+                "row": 4,
+                "col": 3
+              }
+            },
+            {
+              "type": "cell",
+              "text": "aaa",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "aaa",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "aaa",
+                      "formatting": {},
+                      "metadata": {
+                        "style": "TableContents"
+                      }
+                    }
+                  ],
+                  "metadata": {
+                    "style": "TableContents"
+                  }
+                }
+              ],
+              "metadata": {
+                "row": 4,
+                "col": 4
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "",
+      "children": [],
+      "metadata": {
+        "style": "BodyText"
+      }
+    },
+    {
+      "type": "table",
+      "children": [
+        {
+          "type": "row",
+          "children": [
+            {
+              "type": "cell",
+              "text": "Ugly Table with only one cell and multiple stringsMore stringsWow look so stringy~",
+              "children": [
+                {
+                  "type": "paragraph",
+                  "text": "Ugly Table with only one cell and multiple strings",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "Ugly Table with only one cell and multiple strings",
+                      "formatting": {},
+                      "metadata": {
+                        "style": "TableContents"
+                      }
+                    }
+                  ],
+                  "metadata": {
+                    "style": "TableContents"
+                  }
+                },
+                {
+                  "type": "paragraph",
+                  "text": "More strings",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "More strings",
+                      "formatting": {},
+                      "metadata": {
+                        "style": "TableContents"
+                      }
+                    }
+                  ],
+                  "metadata": {
+                    "style": "TableContents"
+                  }
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Wow look so stringy~",
+                  "children": [
+                    {
+                      "type": "text",
+                      "text": "Wow look so stringy~",
+                      "formatting": {},
+                      "metadata": {
+                        "style": "TableContents"
+                      }
+                    }
+                  ],
+                  "metadata": {
+                    "style": "TableContents"
+                  }
+                }
+              ],
+              "metadata": {
+                "row": 0,
+                "col": 0
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "",
+      "children": [],
+      "metadata": {
+        "style": "BodyText"
+      }
+    }
+  ],
+  "attachments": [],
+  "warnings": []
+}

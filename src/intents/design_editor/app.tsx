@@ -22,6 +22,7 @@ import { FormattedMessage, useIntl } from "react-intl";
 import * as styles from "styles/components.css";
 import { useState, useEffect } from "react";
 import { findFonts } from "@canva/asset";
+import { parseDocument } from "../../../scripts/parser/DocumentParser.js";
 
 export const DOCS_URL = "https://www.canva.dev/docs/apps/";
 
@@ -65,12 +66,9 @@ export const App = () => {
   const [error, setError] = useState<string | undefined>(undefined);
 
   const [file, setFile] = useState<File | null>(null);
-  
 
   const handleDropAcceptedFiles = (acceptedFiles: File[]) => {
-    
     setFile(acceptedFiles[0] ?? null);
-    
   };
 
   const handleDeleteFile = () => {
@@ -87,30 +85,38 @@ export const App = () => {
     isSupported(fn),
   );
 
-  const onClick = () => {
-    // if (fileInputRef.current) {
-    //   fileInputRef.current.value = "";
-    //   fileInputRef.current.click();
-    // }
+   const onClick = async () => {
+    if (!file) return;
+    try{
+    const jsonString = await file.arrayBuffer();
+    const content = await parseDocument(jsonString);
+    const contentArray = JSON.parse((await content.to('text')).value);
+    await jsonToCanva(contentArray);
+    } catch (error) {
+      console.error("Error parssing .docx document", error);
+    }
+
+    
+
   };
 
   // const onFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    // const file = event.target.files?.[0];
-    // if (!file) return;
+  // const file = event.target.files?.[0];
+  // if (!file) return;
 
-    // const reader = new FileReader();
-    // reader.onload = (e) => {
-    //   const jsonString = e.target?.result as string;
-    //   try {
-    //     const parsedata = JSON.parse(jsonString);
-    //     const contentArray = parsedata.content as DocumentParagraph[];
-    //     jsonToCanva(contentArray);
-    //   } catch (error) {
-    //     console.error("Error parsing JSON:", error);
-    //   }
-    // };
+  // const reader = new FileReader();
+  // reader.onload = (e) => {
+  //   const jsonString = e.target?.result as string;
+  //   try {
+  //     const parsedata = JSON.parse(jsonString);
+  //     const contentArray = parsedata.content as DocumentParagraph[];
+  //     jsonToCanva(contentArray);
+  //   } catch (error) {
+  //     console.error("Error parsing JSON:", error);
+  //   }
+  // };
 
-    // reader.readAsText(file);
+  // reader.readAsText(file);
   // };
 
   const openExternalUrl = async (url: string) => {
@@ -147,7 +153,7 @@ export const App = () => {
     let elementCount = 0;
     let currentTopPos = startTopPos;
     //Canva has a limit of 20 editor requests every 10 seconds, timer is to not trigger failsafe.
-    const sleepTime = 501;
+    const sleepTime = 501; 
 
     for (const content of parsedData) {
       if (
@@ -327,7 +333,7 @@ export const App = () => {
             "
             description="Instructions for how to make changes to the app. Do not translate <code>src/app.tsx</code>."
             values={{
-              code: (chunks) => <code>{chunks}</code>,
+             
             }}
           />
         </Text>
@@ -336,7 +342,7 @@ export const App = () => {
           id="mainInput"
           onDropAcceptedFiles={handleDropAcceptedFiles}
         />
-       
+
         {file && (
           <FileInputItem label={file.name} onDeleteClick={handleDeleteFile} />
         )}
@@ -357,7 +363,7 @@ export const App = () => {
           stretch
         >
           {intl.formatMessage({
-            defaultMessage: "Choose .json document",
+            defaultMessage: "Place text from .docx file",
             description:
               "Button text to do something cool. Creates a new text element when pressed.",
           })}

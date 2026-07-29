@@ -1,0 +1,771 @@
+enerators/PdfGenerator.js
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+WARNING in ./node_modules/officeparser/dist/generators/PdfGenerator.js 72:47-70
+Module not found: Error: Can't resolve 'child_process' in '/home/user/Documents/Github/officetocanva/node_modules/officeparser/dist/generators'
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./generators/PdfGenerator.js
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+WARNING in ./node_modules/officeparser/dist/officeparser.browser.iife.js 6:401-408
+Critical dependency: require function is used in a way in which dependencies cannot be statically extracted
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./officeparser.browser.iife.js
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+WARNING in ./node_modules/officeparser/dist/officeparser.browser.iife.js 6:530-537
+Critical dependency: require function is used in a way in which dependencies cannot be statically extracted
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./officeparser.browser.iife.js
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+WARNING in ./node_modules/officeparser/dist/officeparser.browser.iife.js 1224:2365-2388
+Module not found: Error: Can't resolve 'child_process' in '/home/user/Documents/Github/officetocanva/node_modules/officeparser/dist'
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./officeparser.browser.iife.js
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+WARNING in ./node_modules/officeparser/dist/officeparser.browser.slim.iife.js 6:401-408
+Critical dependency: require function is used in a way in which dependencies cannot be statically extracted
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./officeparser.browser.slim.iife.js
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+WARNING in ./node_modules/officeparser/dist/officeparser.browser.slim.iife.js 6:530-537
+Critical dependency: require function is used in a way in which dependencies cannot be statically extracted
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./officeparser.browser.slim.iife.js
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+WARNING in ./node_modules/officeparser/dist/officeparser.browser.slim.iife.js 1224:2365-2388
+Module not found: Error: Can't resolve 'child_process' in '/home/user/Documents/Github/officetocanva/node_modules/officeparser/dist'
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./officeparser.browser.slim.iife.js
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+WARNING in ./node_modules/officeparser/dist/utils/moduleLoader.js 23:29-55
+Critical dependency: the request of a dependency is an expression
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./utils/moduleLoader.js
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+WARNING in ./node_modules/officeparser/dist/utils/moduleLoader.js 25:15-30
+Critical dependency: the request of a dependency is an expression
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./utils/moduleLoader.js
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+WARNING in ./node_modules/officeparser/dist/utils/moduleLoader.js 29:15-32
+Critical dependency: the request of a dependency is an expression
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./utils/moduleLoader.js
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+WARNING in ./node_modules/officeparser/dist/utils/moduleLoader.js 52:12-48
+Critical dependency: the request of a dependency is an expression
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./utils/moduleLoader.js
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+WARNING in ./node_modules/officeparser/dist/utils/moduleLoader.js 74:16-53
+Critical dependency: the request of a dependency is an expression
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./utils/moduleLoader.js
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+WARNING in ./node_modules/file-type/source/index.js 67:8-25
+Critical dependency: the request of a dependency is an expression
+ @ ./node_modules/officeparser/dist/utils/moduleLoader.js 62:11-30
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./utils/moduleLoader.js
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+WARNING in ./node_modules/officeparser/dist/officeparser.browser.mjs 1224:2365-2388
+Module not found: Error: Can't resolve 'child_process' in '/home/user/Documents/Github/officetocanva/node_modules/officeparser/dist'
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./officeparser.browser.mjs
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+WARNING in ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 1224:2365-2388
+Module not found: Error: Can't resolve 'child_process' in '/home/user/Documents/Github/officetocanva/node_modules/officeparser/dist'
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+17 warnings have detailed information that is not shown.
+Use 'stats.errorDetails: true' resp. '--stats-error-details' to show it.
+
+ERROR in ./node_modules/officeparser/dist/OfficeConverter.d.ts 5:5
+Module parse failed: Unexpected token (5:5)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+|  * Utility type to infer the file type from a file path string literal.
+|  */
+> type InferFileTypeFromPath<T> = T extends `${string}.${infer E}` ? (Lowercase<E> extends SupportedFileType ? Lowercase<E> : SupportedFileType) : SupportedFileType;
+| /**
+|  * Main converter class providing a streamlined one-step API for document conversion.
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./OfficeConverter.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/OfficeGenerator.d.ts 5:7
+Module parse failed: Unexpected token (5:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+|  * Main generator class providing document conversion functionality.
+|  */
+> export declare class OfficeGenerator {
+|     /**
+|      * Normalizes format aliases (e.g., 'txt' to 'text', 'markdown' to 'md') to standard internal formats.
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./OfficeGenerator.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/OfficeParser.d.ts 46:7
+Module parse failed: Unexpected token (46:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+|  * universal entry point for parsing any supported office document format.
+|  */
+> export declare class OfficeParser {
+|     /**
+|      * Parses an office document and returns a structured AST.
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./OfficeParser.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/cli.js 65:24-37
+Module not found: Error: Can't resolve 'fs' in '/home/user/Documents/Github/officetocanva/node_modules/officeparser/dist'
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./cli.js
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/defaults.d.ts 7:7
+Module parse failed: Unexpected token (7:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+|  * segmenter that accounts for common abbreviations (Mr., Dr., etc.).
+|  */
+> export declare const DEFAULT_SENTENCE_BOUNDARY_REGEX: RegExp;
+| /**
+|  * Common abbreviations that should not trigger a sentence split when followed by a period.
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./defaults.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/generators/BaseGenerator.d.ts 7:7
+Module parse failed: Unexpected token (7:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+|  * Provides common traversal logic and configuration handling.
+|  */
+> export declare abstract class BaseGenerator<D extends UniversalGeneratorFormat = UniversalGeneratorFormat> {
+|     protected destination: D;
+|     protected config: FullGeneratorConfig;
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./generators/BaseGenerator.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/generators/ChunkingGenerator.d.ts 7:7
+Module parse failed: Unexpected token (7:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+|  * Supports three strategies: 'fixed-size', 'document-structure', and 'semantic'.
+|  */
+> export declare class ChunkingGenerator extends BaseGenerator<'chunks'> {
+|     /** The resolved chunking config (with defaults applied). */
+|     private chunkConfig;
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./generators/ChunkingGenerator.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/generators/CsvGenerator.d.ts 6:7
+Module parse failed: Unexpected token (6:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+|  * Generates CSV files from an AST.
+|  */
+> export declare class CsvGenerator extends BaseGenerator<'csv'> {
+|     constructor(ast: OfficeParserAST, config?: GeneratorConfig<'csv'>);
+|     /**
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./generators/CsvGenerator.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/generators/EpubGenerator.d.ts 15:7
+Module parse failed: Unexpected token (15:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+|  * the manifest, and its `<img src>` rewritten to point at the packaged file.
+|  */
+> export declare class EpubGenerator extends BaseGenerator<'epub'> {
+|     constructor(ast: OfficeParserAST, config?: GeneratorConfig<'epub'>);
+|     /**
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./generators/EpubGenerator.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/generators/HtmlGenerator.d.ts 6:7
+Module parse failed: Unexpected token (6:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+|  * Generates semantic, high-fidelity HTML from an AST.
+|  */
+> export declare class HtmlGenerator extends BaseGenerator<'html'> {
+|     private chartCounter;
+|     private isSpreadsheetMode;
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./generators/HtmlGenerator.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/generators/MarkdownGenerator.d.ts 32:7
+Module parse failed: Unexpected token (32:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+|  *    emphasis markers, tables). See `resolveDialect()` and `MARKDOWN_DIALECT_PRESETS` above.
+|  */
+> export declare class MarkdownGenerator extends BaseGenerator<'md'> {
+|     private isInsideTable;
+|     /**
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./generators/MarkdownGenerator.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/generators/PdfGenerator.d.ts 10:7
+Module parse failed: Unexpected token (10:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+|  * - Browser: Leverages native browser print capabilities.
+|  */
+> export declare class PdfGenerator extends BaseGenerator<'pdf'> {
+|     constructor(ast: OfficeParserAST, config?: GeneratorConfig<'pdf'>);
+|     generate(): Promise<ConversionResult<'pdf'>>;
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./generators/PdfGenerator.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/generators/RtfGenerator.d.ts 6:7
+Module parse failed: Unexpected token (6:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+|  * Generates high-fidelity RTF (Rich Text Format) from an AST.
+|  */
+> export declare class RtfGenerator extends BaseGenerator<'rtf'> {
+|     private colorTable;
+|     private inTable;
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./generators/RtfGenerator.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/generators/TextGenerator.d.ts 6:7
+Module parse failed: Unexpected token (6:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+|  * Generates plain text from an AST.
+|  */
+> export declare class TextGenerator extends BaseGenerator<'text'> {
+|     constructor(ast: OfficeParserAST, config?: GeneratorConfig<'text'>);
+|     /**
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./generators/TextGenerator.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/index.d.ts 55:8
+Module parse failed: Unexpected token (55:8)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+| import { OfficeConverter } from './OfficeConverter.js';
+| import { OfficeParserConfig, OfficeParserAST, OfficeContentNode, OfficeAttachment, OfficeMetadata, TextFormatting, SupportedFileType, OfficeContentNodeType, OfficeMimeType, SlideMetadata, SheetMetadata, HeadingMetadata, ListMetadata, CellMetadata, ImageMetadata, PageMetadata, ContentMetadata, BreakMetadata, GeneratorConfig, SupportedDestination, UniversalGeneratorFormat, ChunkingConfig, ChunkingStrategy, FixedSizeChunkingConfig, DocumentStructureChunkingConfig, SemanticChunkingConfig, OfficeChunk, OfficeConverterConfig, OfficeErrorType, OfficeWarningType, ConversionResult } from './types.js';
+> declare const parseOffice: typeof OfficeParser.parseOffice;
+| declare const terminateOcr: typeof OfficeParser.terminateOcr;
+| declare const convert: typeof OfficeConverter.convert;
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./index.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/officeparser.browser.d.ts 7:7
+Module parse failed: Unexpected token (7:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+|  * Use these to identify the kind of error being reported.
+|  */
+> export declare enum OfficeErrorType {
+|       /** Unsupported file extension */
+|       EXTENSION_UNSUPPORTED = "EXTENSION_UNSUPPORTED",
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./officeparser.browser.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/officeparser.browser.slim.d.ts 7:7
+Module parse failed: Unexpected token (7:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+|  * Use these to identify the kind of error being reported.
+|  */
+> export declare enum OfficeErrorType {
+|       /** Unsupported file extension */
+|       EXTENSION_UNSUPPORTED = "EXTENSION_UNSUPPORTED",
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./officeparser.browser.slim.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/parsers/CsvParser.d.ts 9:7
+Module parse failed: Unexpected token (9:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+|  * @returns A promise resolving to the parsed AST
+|  */
+> export declare const parseCsv: (buffer: Buffer, config: FullOfficeParserConfig) => Promise<OfficeParserAST>;
+| 
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./parsers/CsvParser.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/parsers/EpubParser.d.ts 8:7
+Module parse failed: Unexpected token (8:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+|  * essentially a sequence of XHTML documents, so there's no need for a bespoke content model.
+|  */
+> export declare const parseEpub: (buffer: Buffer, config: FullOfficeParserConfig) => Promise<OfficeParserAST>;
+| 
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./parsers/EpubParser.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/parsers/ExcelParser.d.ts 32:7
+Module parse failed: Unexpected token (32:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+|  * @returns A promise resolving to the parsed AST
+|  */
+> export declare const parseExcel: (buffer: Buffer, config: FullOfficeParserConfig) => Promise<OfficeParserAST>;
+| 
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./parsers/ExcelParser.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/parsers/HtmlParser.d.ts 2:7
+Module parse failed: Unexpected token (2:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+| import { FullOfficeParserConfig, OfficeParserAST } from '../types.js';
+> export declare const parseHtml: (buffer: Buffer, config: FullOfficeParserConfig) => Promise<OfficeParserAST>;
+| 
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./parsers/HtmlParser.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/parsers/MarkdownParser.d.ts 2:7
+Module parse failed: Unexpected token (2:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+| import { FullOfficeParserConfig, OfficeParserAST } from '../types.js';
+> export declare const parseMarkdown: (buffer: Buffer, config: FullOfficeParserConfig) => Promise<OfficeParserAST>;
+| 
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./parsers/MarkdownParser.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/parsers/OpenOfficeParser.d.ts 31:7
+Module parse failed: Unexpected token (31:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+|  * @returns A promise resolving to the parsed AST
+|  */
+> export declare const parseOpenOffice: (buffer: Buffer, config: FullOfficeParserConfig) => Promise<OfficeParserAST>;
+| 
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./parsers/OpenOfficeParser.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/parsers/PdfParser.d.ts 67:7
+Module parse failed: Unexpected token (67:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+|  * @returns Promise resolving to the parsed AST
+|  */
+> export declare const parsePdf: (buffer: Buffer, config: FullOfficeParserConfig) => Promise<OfficeParserAST>;
+| 
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./parsers/PdfParser.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/parsers/PowerPointParser.d.ts 32:7
+Module parse failed: Unexpected token (32:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+|  * @returns A promise resolving to the parsed AST
+|  */
+> export declare const parsePowerPoint: (buffer: Buffer, config: FullOfficeParserConfig) => Promise<OfficeParserAST>;
+| 
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./parsers/PowerPointParser.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/parsers/RtfParser.d.ts 51:7
+Module parse failed: Unexpected token (51:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+|  * // Parsed as group containing control word 'b' and text 'bold text'
+|  */
+> export interface RtfGroup {
+|     /** Node type identifier */
+|     type: 'group';
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./parsers/RtfParser.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/parsers/WordParser.d.ts 79:7
+Module parse failed: Unexpected token (79:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+|  * @returns A promise resolving to the parsed AST
+|  */
+> export declare const parseWord: (buffer: Buffer, config: FullOfficeParserConfig) => Promise<OfficeParserAST>;
+| 
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./parsers/WordParser.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/types.d.ts 5:7
+Module parse failed: Unexpected token (5:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+|  * Use these to identify the kind of error being reported.
+|  */
+> export declare enum OfficeErrorType {
+|     /** Unsupported file extension */
+|     EXTENSION_UNSUPPORTED = "EXTENSION_UNSUPPORTED",
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./types.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/utils/astUtils.d.ts 16:7
+Module parse failed: Unexpected token (16:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+|  * @returns An object conforming to OfficeParserAST
+|  */
+> export declare function createAST(type: SupportedFileType, metadata: OfficeMetadata, content: OfficeContentNode[], attachments: OfficeAttachment[], config: OfficeParserConfig, auxiliary: OfficeAuxiliaryContent | undefined, toTextSync: () => string): OfficeParserAST;
+| 
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./utils/astUtils.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/utils/chartUtils.d.ts 6:7
+Module parse failed: Unexpected token (6:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+|  * @param xmlBuffer Chart XML buffer
+|  */
+> export declare const extractChartData: (xmlBuffer: Buffer) => ChartData;
+| 
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./utils/chartUtils.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/utils/configUtils.d.ts 5:7
+Module parse failed: Unexpected token (5:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+|  * Checks if a configuration object is a FullGeneratorConfig.
+|  */
+> export declare function isFullGeneratorConfig(config: any): config is FullGeneratorConfig;
+| /**
+|  * Checks if a configuration object is a FullOfficeParserConfig.
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./utils/configUtils.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/utils/dateUtils.d.ts 17:7
+Module parse failed: Unexpected token (17:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+|  * @returns Parsed Date object or undefined if parsing fails
+|  */
+> export declare function parseOfficeDate(dateString: string | undefined): Date | undefined;
+| 
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./utils/dateUtils.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/utils/envUtils.d.ts 7:7
+Module parse failed: Unexpected token (7:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+|  * Detect if we are running in a browser environment.
+|  */
+> export declare const isBrowser: boolean;
+| /**
+|  * Supported Node.js-only features that require explicit guarding for browser compatibility.
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./utils/envUtils.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/utils/errorUtils.d.ts 16:7
+Module parse failed: Unexpected token (16:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+|  * @returns The formatted warning message string
+|  */
+> export declare const getWarningMessage: (type: OfficeWarningType, info?: any) => string;
+| /**
+|  * Creates, optionally logs to console, and returns a formatted OfficeParser error.
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./utils/errorUtils.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/utils/imageUtils.d.ts 25:7
+Module parse failed: Unexpected token (25:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+|  * ```
+|  */
+> export declare const getMimeFromExtension: (ext: string) => string;
+| /**
+|  * Detects the MIME type from file magic bytes (file signature).
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./utils/imageUtils.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/utils/mathUtils.d.ts 9:7
+Module parse failed: Unexpected token (9:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+|  * right degradation for a construct that carries no grouping of its own.
+|  */
+> export declare const ommlToLatex: (node: Node, depth?: number) => string;
+| /**
+|  * The subset of a parsed element every MathML source here can present.
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./utils/mathUtils.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/utils/moduleLoader.d.ts 10:12
+Module parse failed: Unexpected token (10:12)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+|  * into require() when targeting CommonJS.
+|  */
+> import type * as FileTypeModule from 'file-type' with { 'resolution-mode': 'import' };
+| /**
+|  * Specialized loader for file-type
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./utils/moduleLoader.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/utils/ocrUtils.d.ts 35:7
+Module parse failed: Unexpected token (35:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+|  * @see https://github.com/naptha/tesseract.js for supported languages and options
+|  */
+> export declare const performOcr: (image: Buffer | string, config?: OcrConfig) => Promise<string>;
+| /**
+|  * Terminates all OCR workers and cleans up resources.
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./utils/ocrUtils.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/utils/sanitize.d.ts 24:7
+Module parse failed: Unexpected token (24:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+|  * depth the surrounding comments describe.
+|  */
+> export declare function isSafeHtmlAttributeName(name: string): boolean;
+| /**
+|  * Whether a `styleMap` `output.tag` may be emitted as an element name.
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./utils/sanitize.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/utils/sheetUtils.d.ts 7:7
+Module parse failed: Unexpected token (7:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+|  * @returns An array of unique, sorted numbers (1-based indices)
+|  */
+> export declare function parseRangeString(rangeStr: string): number[];
+| 
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./utils/sheetUtils.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/utils/styleMapper.d.ts 2:7
+Module parse failed: Unexpected token (2:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+| import { OfficeContentNode, StructuredStyleMapping } from '../types.js';
+> export interface StyleMapping {
+|     selector: {
+|         nodeType?: string;
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./utils/styleMapper.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/utils/xmlUtils.d.ts 16:7
+Module parse failed: Unexpected token (16:7)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+|  * Type guard for Element nodes.
+|  */
+> export declare const isElement: (node: Node) => node is Element;
+| /**
+|  * Parses an XML string into a DOM Document object.
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./utils/xmlUtils.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+ERROR in ./node_modules/officeparser/dist/utils/zipUtils.d.ts 21:0
+Module parse failed: The keyword 'interface' is reserved (21:0)
+You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders
+|  * Contains the file's path within the archive and its content as a Buffer.
+|  */
+> interface ZipFileContent {
+|     /**
+|      * The relative path of the file within the ZIP archive.
+ @ ./node_modules/officeparser/dist/ lazy ^.*.*$ strict namespace object ./utils/zipUtils.d.ts
+ @ ./node_modules/officeparser/dist/officeparser.browser.slim.mjs 95:138535-138579
+ @ ./scripts/parser/DocumentParser.js 1:0-49 4:20-44
+ @ ./src/intents/design_editor/app.tsx 11:0-74 41:34-47
+ @ ./src/intents/design_editor/index.tsx 6:0-28 9:87-90
+ @ ./src/index.tsx 2:0-51 3:20-32
+
+1 error has detailed information that is not shown.
+Use 'stats.errorDetails: true' resp. '--stats-error-details' to show it.
+
+webpack 5.105.2 compiled with 43 errors and 17 warnings in 13329 ms
