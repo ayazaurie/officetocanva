@@ -184,17 +184,17 @@ export function buildConfig({
     },
 
     plugins: [
-      new webpack.ContextReplacementPlugin(
-        /officeparser[\\/]dist/,
-        /^\.\/parsers\/WordParser\.js$/,
-      ),
-      // new webpack.ContextReplacementPlugin(
       //   /officeparcer[\\/]dist/,
       //   /^\.\/(parsers\/(Word|Excel|PowerPoint|Csv|Html|Markdown)Parser)\.js$/
       // ),
       new DefinePlugin({
         BACKEND_HOST: JSON.stringify(backendHost),
       }),
+      new webpack.ContextReplacementPlugin(
+        /officeparser[\\/]dist/,
+        /^\.\/parsers\/WordParser\.js$/,
+      ),
+      // new webpack.ContextReplacementPlugin(
 
       // Apps can only submit a single JS file via the Developer Portal
       new optimize.LimitChunkCountPlugin({ maxChunks: 1 }),
