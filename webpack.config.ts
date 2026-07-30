@@ -1,3 +1,4 @@
+import webpack from "webpack";
 import type { Configuration } from "webpack";
 import { DefinePlugin, optimize } from "webpack";
 import path from "path";
@@ -52,21 +53,25 @@ export function buildConfig({
     context: path.resolve(process.cwd(), "./"),
     entry: inHarness
       ? {
-          harness: path.join(process.cwd(), "harness", "harness.tsx"),
-          init: path.join(process.cwd(), "harness", "init.ts"),
-        }
+        harness: path.join(process.cwd(), "harness", "harness.tsx"),
+        init: path.join(process.cwd(), "harness", "init.ts"),
+      }
       : {
-          app: appEntry,
-        },
+        app: appEntry,
+      },
     target: "web",
     resolve: {
-      
+
       alias: {
         styles: path.resolve(process.cwd(), "styles"),
         src: path.resolve(process.cwd(), "src"),
       },
       extensions: [".ts", ".tsx", ".js", ".css", ".svg", ".woff", ".woff2"],
-      fallback: {url: false}
+      fallback: { 
+        url: false,
+        puppeteer: false,
+        child_process: false,
+      },
     },
     infrastructureLogging: {
       level: inHarness ? "info" : "none",
@@ -141,7 +146,7 @@ export function buildConfig({
             },
           ],
         },
-        
+
         {
           test: /\.css$/,
           include: /node_modules/,
@@ -178,21 +183,29 @@ export function buildConfig({
       path: path.resolve(process.cwd(), "dist"),
       clean: true,
     },
-    
+
     plugins: [
+      new webpack.ContextReplacementPlugin(
+        /officeparser[\\/]dist/,
+        /^\.\/parsers\/WordParser\.js$/
+      ),
+      // new webpack.ContextReplacementPlugin(
+      //   /officeparcer[\\/]dist/,
+      //   /^\.\/(parsers\/(Word|Excel|PowerPoint|Csv|Html|Markdown)Parser)\.js$/
+      // ),
       new DefinePlugin({
         BACKEND_HOST: JSON.stringify(backendHost),
       }),
-      
+
       // Apps can only submit a single JS file via the Developer Portal
       new optimize.LimitChunkCountPlugin({ maxChunks: 1 }),
     ].filter(Boolean),
-    
+
     ...buildDevConfig(devConfig),
-    
+
   };
- 
-} 
+
+}
 
 function buildDevConfig(options?: DevConfig): {
   devtool?: string;
@@ -209,12 +222,12 @@ function buildDevConfig(options?: DevConfig): {
   let devServer: DevServerConfiguration = {
     server: enableHttps
       ? {
-          type: "https",
-          options: {
-            cert: certFile,
-            key: keyFile,
-          },
-        }
+        type: "https",
+        options: {
+          cert: certFile,
+          key: keyFile,
+        },
+      }
       : "http",
     host,
     allowedHosts: [host],
