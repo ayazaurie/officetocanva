@@ -184,9 +184,7 @@ export function buildConfig({
     },
 
     plugins: [
-      //   /officeparcer[\\/]dist/,
-      //   /^\.\/(parsers\/(Word|Excel|PowerPoint|Csv|Html|Markdown)Parser)\.js$/
-      // ),
+     
       new DefinePlugin({
         BACKEND_HOST: JSON.stringify(backendHost),
       }),
@@ -194,7 +192,7 @@ export function buildConfig({
         /officeparser[\\/]dist/,
         /^\.\/parsers\/WordParser\.js$/,
       ),
-      // new webpack.ContextReplacementPlugin(
+    
 
       // Apps can only submit a single JS file via the Developer Portal
       new optimize.LimitChunkCountPlugin({ maxChunks: 1 }),

@@ -29,8 +29,8 @@
     "@canva/platform": "^2.2.2",
     "@canva/user": "^2.2.0",
     "officeparser": "^7.2.1",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3",
+    "react": "19.2.8",
+    "react-dom": "^19.2.8",
     "react-intl": "^7.1.11"
   },
   "devDependencies": {

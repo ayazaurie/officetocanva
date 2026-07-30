@@ -23,6 +23,7 @@ import * as styles from "styles/components.css";
 import { useState, useEffect } from "react";
 import { findFonts } from "@canva/asset";
 import { parseDocument } from "../../../scripts/parser/DocumentParser.js";
+import { text } from "node:stream/consumers";
 
 export const DOCS_URL = "https://www.canva.dev/docs/apps/";
 
@@ -75,10 +76,7 @@ export const App = () => {
     setFile(null);
   };
 
-  // const fileInputRef = useRef<HTMLInputElement | null>(null);
-  // const handlebuttonClick = () => {
-  //   fileInputRef.current?.click();
-  // };
+  /
 
   const isSupported = useFeatureSupport();
   const addElement = [addElementAtPoint, addElementAtCursor].find((fn) =>
@@ -90,31 +88,14 @@ export const App = () => {
     try {
       const jsonString = await file.arrayBuffer();
       const content = await parseDocument(jsonString);
-      const contentArray = JSON.parse((await content.to("text")).value);
+      const textContent = JSON.stringify(content)
+      const parseData = JSON.parse(textContent);
+      const contentArray = parseData.content as DocumentParagraph[];
       await jsonToCanva(contentArray);
     } catch (error) {
-      console.error("Error parssing .docx document", error);
+      console.error("Error parsing .docx document, AHOY", error);
     }
   };
-
-  // const onFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  // const file = event.target.files?.[0];
-  // if (!file) return;
-
-  // const reader = new FileReader();
-  // reader.onload = (e) => {
-  //   const jsonString = e.target?.result as string;
-  //   try {
-  //     const parsedata = JSON.parse(jsonString);
-  //     const contentArray = parsedata.content as DocumentParagraph[];
-  //     jsonToCanva(contentArray);
-  //   } catch (error) {
-  //     console.error("Error parsing JSON:", error);
-  //   }
-  // };
-
-  // reader.readAsText(file);
-  // };
 
   const openExternalUrl = async (url: string) => {
     const response = await requestOpenExternalUrl({
@@ -169,6 +150,7 @@ export const App = () => {
         content.metadata?.style === "Ttulo1" ||
         content.metadata?.style === "Ttulo1Car"
       ) {
+        console.log("HEADING1 DETECTED");
         if (content.text.length === 0) continue;
         await addElementAtPoint({
           type: "text",
@@ -276,10 +258,11 @@ export const App = () => {
         // currentTopPos += elementGap;
         // elementCount++;
         // await sleep(sleepTime);
+        console.log("TABLE DETECTED");
         continue;
-      } else if (!content.metadata?.style) {
+      } else if (!content.metadata?.style || content.type === "paragraph" ) {
         if (content.text.length === 0) continue;
-
+        console.log("TEXT DETECTED");
         const paragraphRange = createRichtextRange();
 
         for (const child of content.children) {
