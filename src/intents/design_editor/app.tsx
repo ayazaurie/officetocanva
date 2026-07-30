@@ -85,19 +85,16 @@ export const App = () => {
     isSupported(fn),
   );
 
-   const onClick = async () => {
+  const onClick = async () => {
     if (!file) return;
-    try{
-    const jsonString = await file.arrayBuffer();
-    const content = await parseDocument(jsonString);
-    const contentArray = JSON.parse((await content.to('text')).value);
-    await jsonToCanva(contentArray);
+    try {
+      const jsonString = await file.arrayBuffer();
+      const content = await parseDocument(jsonString);
+      const contentArray = JSON.parse((await content.to("text")).value);
+      await jsonToCanva(contentArray);
     } catch (error) {
       console.error("Error parssing .docx document", error);
     }
-
-    
-
   };
 
   // const onFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -153,7 +150,7 @@ export const App = () => {
     let elementCount = 0;
     let currentTopPos = startTopPos;
     //Canva has a limit of 20 editor requests every 10 seconds, timer is to not trigger failsafe.
-    const sleepTime = 501; 
+    const sleepTime = 501;
 
     for (const content of parsedData) {
       if (
@@ -332,9 +329,7 @@ export const App = () => {
               Simple tool to import .docx data into canva.
             "
             description="Instructions for how to make changes to the app. Do not translate <code>src/app.tsx</code>."
-            values={{
-             
-            }}
+            values={{}}
           />
         </Text>
         <FileInput

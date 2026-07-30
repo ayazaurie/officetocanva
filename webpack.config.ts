@@ -53,21 +53,20 @@ export function buildConfig({
     context: path.resolve(process.cwd(), "./"),
     entry: inHarness
       ? {
-        harness: path.join(process.cwd(), "harness", "harness.tsx"),
-        init: path.join(process.cwd(), "harness", "init.ts"),
-      }
+          harness: path.join(process.cwd(), "harness", "harness.tsx"),
+          init: path.join(process.cwd(), "harness", "init.ts"),
+        }
       : {
-        app: appEntry,
-      },
+          app: appEntry,
+        },
     target: "web",
     resolve: {
-
       alias: {
         styles: path.resolve(process.cwd(), "styles"),
         src: path.resolve(process.cwd(), "src"),
       },
       extensions: [".ts", ".tsx", ".js", ".css", ".svg", ".woff", ".woff2"],
-      fallback: { 
+      fallback: {
         url: false,
         puppeteer: false,
         child_process: false,
@@ -187,7 +186,7 @@ export function buildConfig({
     plugins: [
       new webpack.ContextReplacementPlugin(
         /officeparser[\\/]dist/,
-        /^\.\/parsers\/WordParser\.js$/
+        /^\.\/parsers\/WordParser\.js$/,
       ),
       // new webpack.ContextReplacementPlugin(
       //   /officeparcer[\\/]dist/,
@@ -202,9 +201,7 @@ export function buildConfig({
     ].filter(Boolean),
 
     ...buildDevConfig(devConfig),
-
   };
-
 }
 
 function buildDevConfig(options?: DevConfig): {
@@ -222,12 +219,12 @@ function buildDevConfig(options?: DevConfig): {
   let devServer: DevServerConfiguration = {
     server: enableHttps
       ? {
-        type: "https",
-        options: {
-          cert: certFile,
-          key: keyFile,
-        },
-      }
+          type: "https",
+          options: {
+            cert: certFile,
+            key: keyFile,
+          },
+        }
       : "http",
     host,
     allowedHosts: [host],
