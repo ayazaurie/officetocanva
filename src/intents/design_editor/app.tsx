@@ -52,6 +52,7 @@ interface DocumentParagraph {
   };
 }
 
+
 enum Operation {
   NONE,
   UPDATE,
@@ -61,6 +62,17 @@ enum Operation {
   GROUP,
   INSERT_AND_GROUP,
 }
+interface ParagraphStyle {
+  style: string;
+  textSize: number;
+  color: string;
+  font: string;
+  bold: boolean;
+  italics: boolean;
+  underline: boolean;
+  strikethrough: boolean;
+  ignore: boolean;
+}
 
 export const App = () => {
   const [operation, setOperation] = useState<Operation>(Operation.NONE);
@@ -68,15 +80,48 @@ export const App = () => {
 
   const [file, setFile] = useState<File | null>(null);
 
-  const handleDropAcceptedFiles = (acceptedFiles: File[]) => {
+  const [parseData, setData] = useState<DocumentParagraph[] | null>(null);
+  const [currentStyles, setStyles] = useState<ParagraphStyle[] | null>(null);
+
+  const defaultSize = 12;
+  const defaultColor = "#000000";
+
+  const handleDropAcceptedFiles = async (acceptedFiles: File[]) => {
     setFile(acceptedFiles[0] ?? null);
+    if (!acceptedFiles || !file) return;
+    const content = await parseDocument(await file.arrayBuffer());
+    const contentArray = content.content as DocumentParagraph[];
+    setData(contentArray ?? null);
+    if(!contentArray) return;
+    setStyles(readStyles(contentArray));
   };
 
   const handleDeleteFile = () => {
     setFile(null);
   };
 
-  /
+  const readStyles = (contentArray: DocumentParagraph[]) => {
+    const checkedStyles: ParagraphStyle[] = [];
+    const styleIndex = 0;
+    for (const content of contentArray) {
+      if (checkedStyles.length === 0 || !checkedStyles.some(style => style.style === content.metadata?.style)) {
+        const newStyle: ParagraphStyle =
+        {
+          style: content.metadata?.style ?? "bodyText",
+          textSize: defaultSize,
+          color: defaultColor,
+          font: "OpenSans",
+          bold: false,
+          italics: false,
+          underline: false,
+          strikethrough: false,
+          ignore: false,
+        }
+        checkedStyles.push(newStyle);
+      }
+    }
+    return checkedStyles;
+  }
 
   const isSupported = useFeatureSupport();
   const addElement = [addElementAtPoint, addElementAtCursor].find((fn) =>
@@ -84,14 +129,9 @@ export const App = () => {
   );
 
   const onClick = async () => {
-    if (!file) return;
+    if (!file || !parseData) return;
     try {
-      const jsonString = await file.arrayBuffer();
-      const content = await parseDocument(jsonString);
-      const textContent = JSON.stringify(content)
-      const parseData = JSON.parse(textContent);
-      const contentArray = parseData.content as DocumentParagraph[];
-      await jsonToCanva(contentArray);
+      await jsonToCanva(parseData);
     } catch (error) {
       console.error("Error parsing .docx document, AHOY", error);
     }
@@ -260,7 +300,7 @@ export const App = () => {
         // await sleep(sleepTime);
         console.log("TABLE DETECTED");
         continue;
-      } else if (!content.metadata?.style || content.type === "paragraph" ) {
+      } else if (!content.metadata?.style || content.type === "paragraph") {
         if (content.text.length === 0) continue;
         console.log("TEXT DETECTED");
         const paragraphRange = createRichtextRange();
@@ -331,11 +371,11 @@ export const App = () => {
           tooltipLabel={
             !addElement
               ? intl.formatMessage({
-                  defaultMessage:
-                    "This feature is not supported in the current page",
-                  description:
-                    "Tooltip label for when a feature is not supported in the current design",
-                })
+                defaultMessage:
+                  "This feature is not supported in the current page",
+                description:
+                  "Tooltip label for when a feature is not supported in the current design",
+              })
               : undefined
           }
           stretch
