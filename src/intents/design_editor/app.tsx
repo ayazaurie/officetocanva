@@ -66,6 +66,7 @@ interface ParagraphStyle {
   style: string;
   textSize: number;
   color: string;
+  allign: string;
   font: string;
   bold: boolean;
   italics: boolean;
@@ -102,7 +103,6 @@ export const App = () => {
 
   const readStyles = (contentArray: DocumentParagraph[]) => {
     const checkedStyles: ParagraphStyle[] = [];
-    const styleIndex = 0;
     for (const content of contentArray) {
       if (checkedStyles.length === 0 || !checkedStyles.some(style => style.style === content.metadata?.style)) {
         const newStyle: ParagraphStyle =
@@ -111,6 +111,7 @@ export const App = () => {
           textSize: defaultSize,
           color: defaultColor,
           font: "OpenSans",
+          allign: "left",
           bold: false,
           italics: false,
           underline: false,
