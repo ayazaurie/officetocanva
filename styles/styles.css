@@ -1,0 +1,9 @@
+.style-title
+{
+  vertical-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color: blue;
+}

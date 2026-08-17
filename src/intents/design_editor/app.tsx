@@ -25,6 +25,8 @@ import { findFonts } from "@canva/asset";
 import { parseDocument } from "../../../scripts/parser/DocumentParser.js";
 import { text } from "node:stream/consumers";
 
+import StylesUI from '../../components/StylesUI';
+
 export const DOCS_URL = "https://www.canva.dev/docs/apps/";
 
 interface DocumentChildren {
@@ -365,6 +367,15 @@ export const App = () => {
         {file && (
           <FileInputItem label={file.name} onDeleteClick={handleDeleteFile} />
         )}
+        <StylesUI styleName="StyleOne" 
+                  textSize="14" 
+                  color="#000000" 
+                  allign="left" 
+                  font="montserrat" 
+                  isBold="false" 
+                  isItalics="false" 
+                  isStrikethrough="false" 
+                  isIgnore="false"/>
         <Button
           variant="primary"
           onClick={onClick}
