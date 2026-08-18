@@ -368,14 +368,16 @@ export const App = () => {
           <FileInputItem label={file.name} onDeleteClick={handleDeleteFile} />
         )}
         <StylesUI styleName="StyleOne" 
-                  textSize="14" 
+                  textSize={14}
                   color="#000000" 
-                  allign="left" 
-                  font="montserrat" 
-                  isBold="false" 
-                  isItalics="false" 
-                  isStrikethrough="false" 
-                  isIgnore="false"/>
+                  align="left" 
+               
+                  isBold= {false}
+                  isItalics={false}
+                  isStrikethrough={false}
+                  isList = {false}
+                  isUnderlined = {false}
+                  />
         <Button
           variant="primary"
           onClick={onClick}

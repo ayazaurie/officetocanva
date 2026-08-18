@@ -40,11 +40,11 @@ interface StyleUIProps {
     textSize: number,
     color: string,
     align: string,
-    isBold: boolean,
-    isItalics: boolean,
-    isStrikethrough: boolean,
-    isList: boolean,
-    isUnderlined: boolean,
+    isBold?: boolean,
+    isItalics?: boolean,
+    isStrikethrough?: boolean,
+    isList?: boolean,
+    isUnderlined?: boolean,
     
 }
 
@@ -61,13 +61,7 @@ export default function StylesUI({
     const [styleTextSize, setStyleTextSize] = React.useState<number>(textSize);
     const [styleColor, setStyleColor] = React.useState<string>(color);
     const [styleAlign, setStyleAlign] = React.useState<string>(align);
-    const [styleIsBold, setStyleIsBold] = React.useState<boolean>(isBold);
-    const [styleIsItalics, setStyleIsItalics] = React.useState<boolean>(isItalics);
-    const [styleIsStrike, setStyleIsStrike] = React.useState<boolean>(isStrikethrough);
-    const [styleIsUnderlined, setStyleIsUnderlined] = React.useState<boolean>(isUnderlined);
-    const [styleIsIgnored, setStyleIsIgnored] = React.useState<boolean>(false);
-    const [styleIsMayus, setStyleIsMayus] = React.useState<boolean>(false);
-    const [styleIsList, setStyleIsList] = React.useState<boolean>(isList);
+    const [styleMods, setStyleMods] = React.useState<boolean[]>([isBold, isItalics, isStrikethrough, isUnderlined, isList, false, false]);
     
 
     async function handleFontClick() {
@@ -97,99 +91,14 @@ export default function StylesUI({
         }
     }
 
-    async function handleBoldClick() {
-        switch(styleIsBold)
-        {
-            case false:
-                setStyleIsBold(true);
-                break;
-            case true:
-                setStyleIsBold(false);
-                break;
-            default:
-                break;
-        }
+      
+    const handleModClick = (index: number) => {
+       
+        setStyleMods((prev) => 
+            prev.map((value : boolean, i) => (i === index ? !value : value))
+        );
     }
-    async function handleItalicsClick() {
-        switch(styleIsItalics)
-        {
-            case false:
-                setStyleIsItalics(true);
-                break;
-            case true:
-                setStyleIsItalics(false);
-                break;
-            default:
-                break;
-        }
-    }
-
-    async function handleStrikeClick() {
-        switch(styleIsBold)
-        {
-            case false:
-                setStyleIsStrike(true);
-                break;
-            case true:
-                setStyleIsStrike(false);
-                break;
-            default:
-                break;
-        }
-    }
-
-    async function handleIgnoredClick() {
-        switch(styleIsBold)
-        {
-            case false:
-                setStyleIsIgnored(true);
-                break;
-            case true:
-                setStyleIsIgnored(false);
-                break;
-            default:
-                break;
-        }
-    }
-    async function handleIsMayusClick() {
-        switch(styleIsBold)
-        {
-            case false:
-                setStyleIsMayus(true);
-                break;
-            case true:
-                setStyleIsMayus(false);
-                break;
-            default:
-                break;
-        }
-    }
-    async function handleIsListClick() {
-        switch(styleIsBold)
-        {
-            case false:
-                setStyleIsList(true);
-                break;
-            case true:
-                setStyleIsList(false);
-                break;
-            default:
-                break;
-        }
-    }
-    async function handleIsUnderlinedClick() {
-        switch(styleIsBold)
-        {
-            case false:
-                setStyleIsUnderlined(true);
-                break;
-            case true:
-                setStyleIsUnderlined(false);
-                break;
-            default:
-                break;
-        }
-    }
+   
 
 
     return (
@@ -224,8 +133,8 @@ export default function StylesUI({
                                 size="medium"
                                 type="button"
                                 variant="tertiary"
-                                pressed = {styleIsIgnored}
-                                onClick= {handleIgnoredClick}
+                                pressed = {styleMods[6]}
+                                onClick={() => handleModClick(6)}
                                 
                             />
                         </Column>
@@ -256,7 +165,7 @@ export default function StylesUI({
                         </Column>
                         <Column width="content">
                             <ColorSelector
-                                color="#000000"
+                                color={styleColor}
                                 onChange={handleColorChange}
                                 triggerMode="swatch"
                             />
@@ -272,8 +181,8 @@ export default function StylesUI({
                                 size="medium"
                                 type="button"
                                 variant="tertiary"
-                                onClick={handleBoldClick}
-                                pressed = {styleIsBold}
+                                pressed = {styleMods[0]}
+                                onClick={() => handleModClick(0)}
                                 
                             />
 
@@ -285,8 +194,8 @@ export default function StylesUI({
                                 size="medium"
                                 type="button"
                                 variant="tertiary"
-                                pressed = {styleIsItalics}
-                                onClick= {handleItalicsClick}
+                                pressed = {styleMods[1]}
+                                onClick={() => handleModClick(1)}
                             />
                         </Column>
                         <Column width="content">
@@ -296,8 +205,8 @@ export default function StylesUI({
                                 size="medium"
                                 type="button"
                                 variant="tertiary"
-                                pressed = {styleIsUnderlined}
-                                onClick= {handleIsUnderlinedClick}
+                                pressed = {styleMods[2]}
+                                onClick={() => handleModClick(2)}
                             />
                         </Column>
                         <Column width="content">
@@ -307,7 +216,8 @@ export default function StylesUI({
                                 size="medium"
                                 type="button"
                                 variant="tertiary"
-
+                                pressed = {styleMods[3]}
+                                onClick={() => handleModClick(3)}
                             />
                         </Column>
                         <Column width="content">
@@ -317,14 +227,14 @@ export default function StylesUI({
                                 size="medium"
                                 type="button"
                                 variant="tertiary"
-                                pressed = {styleIsMayus}
-                                onClick= {handleIsMayusClick}
+                                pressed = {styleMods[4]}
+                                onClick={() => handleModClick(4)}
                             />
                         </Column>
                         <Column width="content">
                             <Button
                                 ariaLabel="Togglr text alignment"
-                                icon={() => <TextAlignCenterIcson />}
+                                icon={() => <TextAlignCenterIcon />}
                                 size="medium"
                                 type="button"
                                 variant="tertiary"
@@ -338,8 +248,8 @@ export default function StylesUI({
                                 size="medium"
                                 type="button"
                                 variant="tertiary"
-                                pressed = {styleIsList}
-                                onClick= {handleIsListClick}
+                                pressed = {styleMods[5]}
+                                onClick={() => handleModClick(5)}
                             />
                         </Column>
                         
