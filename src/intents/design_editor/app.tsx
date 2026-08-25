@@ -7,7 +7,7 @@ import {
   Rows,
   Text,
 } from "@canva/app-ui-kit";
-import type { DesignEditing, InlineFormatting } from "@canva/design";
+import type { DesignEditing, DesignMetadata, InlineFormatting, PageMetadata } from "@canva/design";
 import {
   openDesign,
   addElementAtCursor,
@@ -16,6 +16,7 @@ import {
   createRichtextRange,
   TableElement,
   Cell,
+  getDesignMetadata,
 } from "@canva/design";
 import { requestOpenExternalUrl, notification } from "@canva/platform";
 import { FormattedMessage, useIntl } from "react-intl";
@@ -28,31 +29,8 @@ import { text } from "node:stream/consumers";
 import StylesUI from '../../components/StylesUI';
 
 export const DOCS_URL = "https://www.canva.dev/docs/apps/";
-
-interface DocumentChildren {
-  type: string;
-  text?: string;
-  formatting?: {
-    bold?: boolean;
-    italic?: boolean;
-    font?: string;
-  };
-  children?: DocumentChildren[];
-  metadata?: {
-    style?: string;
-    row?: number;
-    col?: number;
-  };
-}
-
-interface DocumentParagraph {
-  type: string;
-  text: string;
-  children: DocumentChildren[];
-  metadata?: {
-    style?: string;
-  };
-}
+import type { DocumentChildren, DocumentParagraph, ParagraphStyle, Coordinate, CanvaDesignAttributes } from "src/utils/interfaces.js";
+import GeneralSettings from "src/components/GeneralSettings.js";
 
 
 enum Operation {
@@ -64,28 +42,66 @@ enum Operation {
   GROUP,
   INSERT_AND_GROUP,
 }
-interface ParagraphStyle {
-  style: string;
-  textSize: number;
-  color: string;
-  allign: string;
-  font: string;
-  bold: boolean;
-  italics: boolean;
-  underline: boolean;
-  strikethrough: boolean;
-  ignore: boolean;
-}
 
 export const App = () => {
   const [operation, setOperation] = useState<Operation>(Operation.NONE);
   const [error, setError] = useState<string | undefined>(undefined);
 
+  
+  const [designMetadata, setDesignMetadata] = useState<DesignMetadata>();
+  const [designAttributes, setDesignAttributes] = useState<CanvaDesignAttributes>({isAbsolute: false});
+
   const [file, setFile] = useState<File | null>(null);
 
   const [parseData, setData] = useState<DocumentParagraph[] | null>(null);
   const [currentStyles, setStyles] = useState<ParagraphStyle[] | null>(null);
+  
+  
 
+  useEffect(() => {
+    async function fetchMetadata() {
+      const data = await getDesignMetadata();
+      setDesignMetadata(data);
+      const pageArray = Array.from(data.pageMetadata);
+
+      for (const page of data.pageMetadata)
+      {
+        if ("type" in page)
+        {
+          if(page.type !== "absolute")
+          {
+            setDesignAttributes({isAbsolute: false });
+          //write error alert here
+         
+            break;
+          }
+        }
+        
+          if ("dimensions" in page)
+          {
+            if (!page.dimensions)
+            {
+              setDesignAttributes({isAbsolute: true, isUniform: false});
+              //write error alert here
+              break;
+            }
+            
+            setDesignAttributes({isAbsolute: true, isUniform: true, x:page.dimensions.width, y:page.dimensions.height }); 
+
+          }
+          
+          
+        }
+
+      }
+
+     fetchMetadata();
+     console.log("I ran! :D");
+     
+    
+  }, []);
+
+  
   const defaultSize = 12;
   const defaultColor = "#000000";
 
@@ -349,6 +365,7 @@ export const App = () => {
   return (
     <div className={styles.scrollContainer}>
       <Rows spacing="2u">
+        
         <Text>
           <FormattedMessage
             defaultMessage="
@@ -362,6 +379,7 @@ export const App = () => {
           accept={[".docx"]}
           id="mainInput"
           onDropAcceptedFiles={handleDropAcceptedFiles}
+          disabled= {!designAttributes?.isAbsolute}
         />
 
         {file && (

@@ -61,7 +61,7 @@ export default function StylesUI({
     const [styleTextSize, setStyleTextSize] = React.useState<number>(textSize);
     const [styleColor, setStyleColor] = React.useState<string>(color);
     const [styleAlign, setStyleAlign] = React.useState<string>(align);
-    const [styleMods, setStyleMods] = React.useState<boolean[]>([isBold, isItalics, isStrikethrough, isUnderlined, isList, false, false]);
+    const [styleMods, setStyleMods] = React.useState<boolean[]>([isBold ?? false, isItalics ?? false, isStrikethrough ?? false, isUnderlined ?? false, isList ?? false, false, false]);
     
 
     async function handleFontClick() {
