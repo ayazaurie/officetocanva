@@ -49,15 +49,13 @@ import * as  React from "react";
 
 
 
-export default function GeneralSettings(designDimentions : Coordinate){
+export default function GeneralSettings({x, y } : Coordinate){
 
-    const defaultStartEndPoints = (() => ({x:designDimentions.y/8, y:7*designDimentions.y/8}));
-    const defaultWidthPointL = (() => ({x: designDimentions.x/8, y:designDimentions.y/8}));
-    const defaultWidthPointR = (() => ({x: 7*designDimentions.x/8, y:designDimentions.y/8}));
+    const defaultStartEndPoints = (() => ({x:y/8, y:7*y/8}));
+    const defaultwidthPoints = (() => ({x: x/8, y:7*x/8}));
     const defaultGap = 6;
-    const [startEndPoint,setStartEndPoint] = React.useState<Coordinate>(defaultStartEndPoints);
-    const [widthPointL,setWidthPointL] = React.useState<Coordinate>((defaultWidthPointL));
-    const [widthPointR,setWidthPointR] = React.useState<Coordinate>((defaultWidthPointR));
+    const [startEndPoints,setStartEndPoints] = React.useState<Coordinate>(defaultStartEndPoints);
+    const [widthPoints,setwidthPoints] = React.useState<Coordinate>((defaultwidthPoints));
     const [gapLength,setGapLength] = React.useState<number>(defaultGap);
     
     return (
@@ -65,27 +63,89 @@ export default function GeneralSettings(designDimentions : Coordinate){
             <Box>
                 <Rows spacing ="1u">
                     <FormField
-                        label="Textbox width settings"
-                        description = "Settings to control placed content width"
+                        label="Elements placement"
+                        description = "Settings to control placed content area"
                         control = {(props) => (
-                            <Columns spacing= "0.5u">
-                                <Column>
-                                    <NumberInput
-                                    {...props}
-                                    defaultValue={widthPointL.x}
-                                    />    
-                                    <NumberInput
-                                    {...props}
-                                    defaultValue={widthPointL.y}
-                                    />  
-                                </Column>
-                            </Columns>
-                            
-                        )}
-                    /> 
+                           
+                                    <Columns spacing= "2u">
+                                        <Column>
+                                            <Rows spacing ="0.5u">
+                                                <Column>
+                                                
+                                                    <Text
+                                                        alignment="start"
+                                                        size="medium"
+                                                        tone="secondary"
+                                                        > Textbox Width</Text>
+                                                    <Button                                                                                ariaLabel="Togglr text alignment"
+                                                            size="medium"
+                                                            type="button"
+                                                            variant="secondary"
+                                                            onClick= {() => {}}
+                                                            stretch = {false}
+                                                        >Reset</Button>
+                                                </Column>
+                                            
+                                            
+                                                <Columns spacing="0.5u">
+                                                    <Column width="1/2">
+                                                        <NumberInput
+                                                        {...props}
+                                                        defaultValue={startEndPoints.x}
+                                                        />    
+                                                        
+                                                    </Column>
+                                                    <Column width="1/2">
+                                                    <NumberInput
+                                                        {...props}
+                                                        defaultValue={startEndPoints.y}
+                                                        />  
+                                                    </Column>
+                                                
+                                                </Columns>
+                                            </Rows>
+                                        </Column>
+
+                                        <Column>
+                                            <Rows spacing ="0.5u">
+                                                <Column>
+                                                
+                                                    <Text
+                                                        alignment="start"
+                                                        size="medium"
+                                                        tone="secondary"
+                                                        > Textbox Width</Text>
+                                                </Column>
+                                            
+                                            
+                                                <Columns spacing="0.5u">
+                                                    <Column width="1/2">
+                                                        <NumberInput
+                                                        {...props}
+                                                        defaultValue={startEndPoints.x}
+                                                        />    
+                                                        
+                                                    </Column>
+                                                    <Column width="1/2">
+                                                    <NumberInput
+                                                        {...props}
+                                                        defaultValue={startEndPoints.y}
+                                                        />  
+                                                    </Column>
+                                                
+                                                </Columns>                                      
+                                            </Rows>
+                                        </Column>
+                                </Columns>
+
+                                 )}/>
                 </Rows>
             </Box>
         </div>
+
+
+                               
+                            
     )
 
 }

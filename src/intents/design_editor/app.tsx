@@ -4,6 +4,7 @@ import {
   Button,
   FileInput,
   FileInputItem,
+  LoadingIndicator,
   Rows,
   Text,
 } from "@canva/app-ui-kit";
@@ -30,7 +31,7 @@ import StylesUI from '../../components/StylesUI';
 
 export const DOCS_URL = "https://www.canva.dev/docs/apps/";
 import type { DocumentChildren, DocumentParagraph, ParagraphStyle, Coordinate, CanvaDesignAttributes } from "src/utils/interfaces.js";
-import GeneralSettings from "src/components/GeneralSettings.js";
+import GeneralSettings from "src/components/GeneralSettings";
 
 
 enum Operation {
@@ -46,15 +47,18 @@ enum Operation {
 export const App = () => {
   const [operation, setOperation] = useState<Operation>(Operation.NONE);
   const [error, setError] = useState<string | undefined>(undefined);
+  const [isLoading, setIsLoading] = useState(true);
 
   
   const [designMetadata, setDesignMetadata] = useState<DesignMetadata>();
   const [designAttributes, setDesignAttributes] = useState<CanvaDesignAttributes>({isAbsolute: false});
+  const [designDimentions, setDesignDimentions] = useState<Coordinate>();
 
   const [file, setFile] = useState<File | null>(null);
 
   const [parseData, setData] = useState<DocumentParagraph[] | null>(null);
   const [currentStyles, setStyles] = useState<ParagraphStyle[] | null>(null);
+  const isDebug = true;
   
   
 
@@ -71,6 +75,7 @@ export const App = () => {
           if(page.type !== "absolute")
           {
             setDesignAttributes({isAbsolute: false });
+            setIsLoading(false);
           //write error alert here
          
             break;
@@ -82,12 +87,14 @@ export const App = () => {
             if (!page.dimensions)
             {
               setDesignAttributes({isAbsolute: true, isUniform: false});
+              setIsLoading(false);
               //write error alert here
               break;
             }
             
             setDesignAttributes({isAbsolute: true, isUniform: true, x:page.dimensions.width, y:page.dimensions.height }); 
-
+            setDesignDimentions({x: designAttributes.x ?? 0, y: designAttributes.y ?? 0});
+            setIsLoading(false);
           }
           
           
@@ -96,7 +103,7 @@ export const App = () => {
       }
 
      fetchMetadata();
-     console.log("I ran! :D");
+      
      
     
   }, []);
@@ -361,11 +368,22 @@ export const App = () => {
       }
     }
   };
-
+  if (isLoading) {
+    return <LoadingIndicator/>;
+  }
   return (
     <div className={styles.scrollContainer}>
       <Rows spacing="2u">
-        
+        <div>
+          { isDebug ?
+          <div>
+            <Text>{"x: " + designAttributes.x}</Text>
+            <Text>{"y: " + designAttributes.y}</Text>
+          </div>
+          
+          : ""
+          }
+        </div>
         <Text>
           <FormattedMessage
             defaultMessage="
@@ -381,10 +399,10 @@ export const App = () => {
           onDropAcceptedFiles={handleDropAcceptedFiles}
           disabled= {!designAttributes?.isAbsolute}
         />
-
+        <GeneralSettings x= {designAttributes.x ?? 8} y={designAttributes.y ?? 8} />
         {file && (
           <FileInputItem label={file.name} onDeleteClick={handleDeleteFile} />
-        )}
+        )} 
         <StylesUI styleName="StyleOne" 
                   textSize={14}
                   color="#000000" 
