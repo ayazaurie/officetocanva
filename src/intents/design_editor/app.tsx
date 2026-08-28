@@ -399,10 +399,10 @@ export const App = () => {
           onDropAcceptedFiles={handleDropAcceptedFiles}
           disabled= {!designAttributes?.isAbsolute}
         />
-        <GeneralSettings x= {designAttributes.x ?? 8} y={designAttributes.y ?? 8} />
         {file && (
           <FileInputItem label={file.name} onDeleteClick={handleDeleteFile} />
         )} 
+        <GeneralSettings x= {designAttributes.x ?? 8} y={designAttributes.y ?? 8} />
         <StylesUI styleName="StyleOne" 
                   textSize={14}
                   color="#000000" 
