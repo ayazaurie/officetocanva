@@ -1,32 +1,19 @@
+//TO DO:
+// Add functionality
+//     Bind Data
+// Add Accessibility features
+//      Tooltips
+//      Tutorial
+
 import {
     Button,
     Rows,
     Columns,
     Column,
     Box,
-    Select,
-    CustomizableSelect,
-    IconElement,
-    Switch,
-    ItalicIcon,
-    TextColorIcon,
-    TextSizeIcon,
-    UnderlineIcon,
-    StrikethroughIcon,
-    BoldIcon,
-    FontIcon,
-    EyeIcon,
-    MoreHorizontalIcon,
     NumberInput,
     FormField,
     Text,
-    ListBulletLtrIcon,
-    TextAlignLeftIcon,
-    TextAlignCenterIcon,
-    TextAlignRightIcon,
-    TextAlignJustifyIcon,
-    AlignLeftIcon,
-    ColorSelector,
     ReloadIcon,
     Accordion,
     AccordionItem,
@@ -40,23 +27,316 @@ import {
     addPage,
     createRichtextRange,
     TextElement,
+    type DesignEditing,
 } from "@canva/design";
 
-import type { DesignMetadata, PageMetadata } from '@canva/design';
+import type { DesignMetadata, PageMetadata, ShapeElementAtPoint } from '@canva/design';
 import type { CanvaDesignAttributes, Coordinate } from "src/utils/interfaces";
+
 
 import { useFeatureSupport } from "@canva/app-hooks"
 import 'styles/components.css';
 import { requestFontSelection } from "@canva/asset";
 import type { Font } from "@canva/asset";
 import * as  React from "react";
+import { UIState } from "src/utils/interfaces";
+import { start } from "repl";
+
+const sleep = (ms: number) =>
+            new Promise((resolve) => setTimeout(resolve, ms));
+const sleepTime = 600;
+
+const handleSetup = async (startPoints: Coordinate,
+    widthPoints: Coordinate,
+    designSize: Coordinate) => {
+    
+    const colors = {
+        left: "#142cff",
+        right: "#ff1414",
+        top: "#000000",
+        bottom: "#ffffff",
+        overlay: "#2d2d2d"
+    }
+
+    const leftLineBase: ShapeElementAtPoint = {
+        type: "shape",
+        paths: [
+            {
+                d: `M 0 0 V ${designSize.y * 3} H 3 L 3 0 Z`,
+                fill: {
+                    dropTarget: false,
+                    color: colors.left,
+                },
+                stroke: {
+                    weight: 4,
+                    color: colors.left,
+                    strokeAlign: "inset"
+                }
+            },
+        ],
+        viewBox: {
+            width: 4,
+            height: designSize.y * 3,
+            top: 0,
+            left: 0,
+        },
+        width: 4,
+        height: designSize.y * 3,
+        rotation: 0,
+        top: 0,
+        left: widthPoints.x,
+    };
+
+    const rightLineBase: ShapeElementAtPoint = {
+        type: "shape",
+        paths: [
+            {
+                d: `M 0 0 V ${designSize.y * 3} H 3 L 3 0 Z`,
+                fill: {
+                    dropTarget: false,
+                    color: colors.right,
+                },
+                stroke: {
+                    weight: 4,
+                    color: colors.right,
+                    strokeAlign: "inset"
+                }
+            },
+        ],
+        viewBox: {
+            width: 4,
+            height: designSize.y * 3,
+            top: 0,
+            left: 0,
+        },
+        width: 4,
+        height: designSize.y * 3,
+        rotation: 0,
+        top: 0,
+        left: widthPoints.y,
+    };
+
+    const topLineBase: ShapeElementAtPoint = {
+        type: "shape",
+        paths: [
+            {
+                d: `M 0 0 H ${designSize.x * 3} V 3 L 0 3 Z`,
+                fill: {
+                    dropTarget: false,
+                    color: colors.top,
+                },
+                stroke: {
+                    weight: 4,
+                    color: colors.top,
+                    strokeAlign: "inset"
+                }
+            },
+        ],
+        viewBox: {
+            width: designSize.x * 3,
+            height: 4,
+            top: 0,
+            left: 0,
+        },
+        width: designSize.x * 3,
+        height: 4,
+        rotation: 0,
+        top: startPoints.x,
+        left: 0,
+    };
+
+    const bottomLineBase: ShapeElementAtPoint = {
+        type: "shape",
+        paths: [
+            {
+                d: `M 0 0 H ${designSize.x * 3} V 3 L 0 3 Z`,
+                fill: {
+                    dropTarget: false,
+                    color: colors.bottom,
+                },
+                stroke: {
+                    weight: 4,
+                    color: colors.bottom,
+                    strokeAlign: "inset"
+                }
+            },
+        ],
+        viewBox: {
+            width: designSize.x * 3,
+            height: 4,
+            top: 0,
+            left: 0,
+        },
+        width: designSize.x * 3,
+        height: 4,
+        rotation: 0,
+        top: startPoints.y,
+        left: 0,
+    };
+    const overlayBase: ShapeElementAtPoint = {
+        type: "shape",
+        paths: [
+            {
+                d: `M 0 0 H ${designSize.x} V ${designSize.y} L 0 ${designSize.y} Z`,
+                fill: {
+                    dropTarget: false,
+                    color: colors.overlay,
+                },
+                stroke: {
+                    weight: 4,
+                    color: colors.overlay,
+                    strokeAlign: "inset"
+                }
+            },
+        ],
+        viewBox: {
+            width: designSize.x,
+            height: designSize.y,
+            top: 0,
+            left: 0,
+        },
+        width: designSize.x,
+        height: designSize.y,
+        rotation: 0,
+        top: 0,
+        left: 0,
+    };
+
+    await addElementAtPoint(overlayBase);
+    await addElementAtPoint(leftLineBase);
+    await addElementAtPoint(rightLineBase);
+    await addElementAtPoint(topLineBase);
+    await addElementAtPoint(bottomLineBase);
+
+    await openDesign({ type: "current_page" }, async (session) => {
+
+        if (session.page.type !== "absolute") return;
+
+        const overlay = session.page.elements.filter((element) => {
+             if (element.type !== "shape") return false;
+
+            return element.paths.toArray().some((path) => {
+                const colorFill = path.fill.colorContainer?.ref;
+                return colorFill?.type == "solid" && colorFill.color === colors.overlay;
+
+            });
+        });
+
+        if (overlay.length > 0) {
+            var times = 0;
+            overlay.forEach((element) => {
+                if (element.locked || element.type === "unsupported") return;
+                element.transparency = 0.3;
+               
+                return;
+                
+            });
+
+        }
+        await sleep(sleepTime);
+
+
+        const leftLine = session.page.elements.filter((element) => {
+            if (element.type !== "shape") return false;
+
+            return element.paths.toArray().some((path) => {
+                const colorFill = path.fill.colorContainer?.ref;
+                return colorFill?.type == "solid" && colorFill.color === colors.left;
+
+            });
+        });
+
+        if (leftLine.length > 0) {
+            var times = 0;
+            leftLine.forEach((element) => {
+                if (element.locked || element.type === "unsupported") return;
+                element.top -= designSize.y;
+                return;
+                
+            });
+
+        }
+        await sleep(sleepTime);
+       
+
+        const rightLine = session.page.elements.filter((element) => {
+            if (element.type !== "shape") return false;
+
+            return element.paths.toArray().some((path) => {
+                const colorFill = path.fill.colorContainer?.ref;
+                return colorFill?.type == "solid" && colorFill.color === colors.right;
+
+            });
+        });
+
+        if (rightLine.length > 0) {
+            rightLine.forEach((element) => {
+                if (element.locked || element.type === "unsupported") return;
+                element.top -= designSize.y;
+            });
+
+        }
+        await sleep(sleepTime/2);
+        
+        const topLine = session.page.elements.filter((element) => {
+            if (element.type !== "shape") return false;
+
+            return element.paths.toArray().some((path) => {
+                const colorFill = path.fill.colorContainer?.ref;
+                return colorFill?.type == "solid" && colorFill.color === colors.top;
+
+            });
+        });
+
+        if (topLine.length > 0) {
+            topLine.forEach((element) => {
+                if (element.locked || element.type === "unsupported") return;
+                element.left -= designSize.x;
+                
+            });
+
+        }
+        await sleep(sleepTime/2);
+       
+
+        const bottomLine = session.page.elements.filter((element) => {
+            if (element.type !== "shape") return false;
+
+            return element.paths.toArray().some((path) => {
+                const colorFill = path.fill.colorContainer?.ref;
+                return colorFill?.type == "solid" && colorFill.color === colors.bottom;
+
+            });
+        });
+
+        
+        if (bottomLine.length > 0) {
+            bottomLine.forEach((element) => {
+                if (element.locked || element.type === "unsupported") 
+                    {
+                        console.log(`locked: ${element.locked} type: ${element.type}`);
+                        return;
+                    }
+                element.left -= designSize.x;
+                
+            });
+
+        }
+      
+        
+        await session.sync();
+
+    });
+
+}
 
 
 
-export default function GeneralSettings({ x, y }: Coordinate) {
 
-    const defaultStartEndPoints = (() => ({ x: y / 8, y: 7 * y / 8 }));
-    const defaultwidthPoints = (() => ({ x: x / 8, y: 7 * x / 8 }));
+export default function GeneralSettings(designSize: Coordinate) {
+
+    const defaultStartEndPoints = (() => ({ x: designSize.y / 8, y: 7 * designSize.y / 8 }));
+    const defaultwidthPoints = (() => ({ x: designSize.x / 8, y: 7 * designSize.x / 8 }));
     const defaultGap = 6;
     const [startEndPoints, setStartEndPoints] = React.useState<Coordinate>(defaultStartEndPoints);
     const [widthPoints, setwidthPoints] = React.useState<Coordinate>((defaultwidthPoints));
@@ -76,17 +356,6 @@ export default function GeneralSettings({ x, y }: Coordinate) {
 
                                     <Columns spacing="1u" align="start">
                                         <Column width="content">
-                                            <Button ariaLabel="Toggle text alignment"
-                                                size="medium"
-                                                type="button"
-
-                                                variant="secondary"
-                                                onClick={() => { }}
-                                                stretch={false}
-                                            >Setup</Button>
-
-                                        </Column>
-                                        <Column width="content">
                                             <Button ariaLabel="Reset Placement Settings"
                                                 size="medium"
                                                 type="button"
@@ -103,22 +372,36 @@ export default function GeneralSettings({ x, y }: Coordinate) {
                                                 size="medium"
                                                 type="button"
 
+                                                variant="secondary"
+                                                onClick={() => handleSetup(
+                                                    startEndPoints, widthPoints, designSize
+                                                )}
+                                                stretch={false}
+                                            >Setup</Button>
+
+                                        </Column>
+
+                                        <Column width="content">
+                                            <Button ariaLabel="Toggle text alignment"
+                                                size="medium"
+                                                type="button"
+
                                                 variant="primary"
                                                 onClick={() => { }}
                                                 stretch={false}
                                             >Update</Button>
 
                                         </Column>
-                                        
+
                                         <Column>
                                             <Button ariaLabel="Placement Info"
-                                                
+
                                                 type="button"
                                                 icon={() => <InfoIcon />}
                                                 variant="tertiary"
                                                 onClick={() => { }}
                                                 stretch={false}
-                                                pressed = {false}
+                                                pressed={false}
                                                 tooltipLabel="Press for helps"
                                             ></Button>
                                         </Column>
@@ -237,6 +520,57 @@ export default function GeneralSettings({ x, y }: Coordinate) {
                                                 </Column>
 
 
+
+                                            </Columns>
+                                            <Columns spacing="0.5u">
+                                                <Column width="content">
+                                                    <Rows spacing="0.5u">
+                                                        <Columns spacing="0.5u">
+
+                                                            <Column width="content">
+                                                                <div style={{
+                                                                    display: 'flex',
+                                                                    flexDirection: 'column',
+                                                                    alignItems: 'center',
+                                                                    justifyContent: 'center',
+                                                                    height: '100%'
+
+                                                                }}>
+
+                                                                    <Text
+                                                                        alignment="start"
+                                                                        size="small"
+                                                                        tone="secondary"
+                                                                    > Gap</Text>
+
+                                                                </div>
+
+                                                            </Column>
+                                                            <Column>
+                                                                <Button ariaLabel="Toggle text alignment"
+                                                                    size="medium"
+                                                                    type="button"
+                                                                    icon={() => <ReloadIcon />}
+                                                                    variant="tertiary"
+                                                                    onClick={() => { }}
+                                                                    stretch={false}
+                                                                ></Button>
+
+                                                            </Column>
+                                                        </Columns>
+                                                        <Columns spacing="0.5u">
+                                                            <Column width="1/2">
+                                                                <NumberInput
+                                                                    {...props}
+                                                                    defaultValue={gapLength}
+                                                                />
+
+                                                            </Column>
+
+
+                                                        </Columns>
+                                                    </Rows>
+                                                </Column>
 
                                             </Columns>
                                         </AccordionItem>

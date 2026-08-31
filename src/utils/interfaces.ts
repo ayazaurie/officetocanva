@@ -48,3 +48,20 @@ export interface ParagraphStyle {
   strikethrough: boolean;
   ignore: boolean;
 }
+
+export type UIState = {
+  paths: {
+    d: string;
+    fill: {
+      dropTarget: boolean;
+      color: string;
+    };
+  }[];
+  viewBox: {
+    width: number;
+    height: number;
+    top: number;
+    left: number;
+  };
+
+};
