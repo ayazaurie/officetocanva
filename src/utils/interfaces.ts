@@ -65,3 +65,33 @@ export type UIState = {
   };
 
 };
+
+export type AppElementData = {
+   
+        paths: [
+            {
+                d: string,
+                fill: {
+                    dropTarget: boolean,
+                    color: string,
+                },
+                stroke: {
+                    weight: number,
+                    color: string,
+                    strokeAlign: string
+                }
+            },
+        ];
+        viewBox: {
+            width: number,
+            height: number,
+            top: number,
+            left: number,
+        };
+        width: number;
+        height: number;
+        rotation: number;
+        top: number;
+        left: number;
+};
+
