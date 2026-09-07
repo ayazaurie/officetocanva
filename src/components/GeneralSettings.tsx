@@ -41,7 +41,7 @@ import 'styles/components.css';
 import { requestFontSelection } from "@canva/asset";
 import type { Font } from "@canva/asset";
 import * as  React from "react";
-import { AppElementData } from "src/utils/interfaces";
+import { AppElementData, AppElementDataRevised } from "src/utils/interfaces";
 import { start } from "repl";
 import { Path } from "typescript";
 
@@ -50,9 +50,74 @@ const sleep = (ms: number) =>
 const sleepTime = 600;
 
 export type AppElementChangeEvent = {
-    data: AppElementData;
-    update?: (opts: AppElementOptions<AppElementData>) => Promise<void>;
+    data: AppElementDataRevised;
+    update?: (opts: AppElementOptions<AppElementDataRevised>) => Promise<void>;
 }
+
+const [state, setState] = React.useState<AppElementChangeEvent> ({
+    data: {
+            d: "",
+            color: "",
+            vWidth: 4,
+            vHeight: 0,
+            vTop: 0,
+            vLeft: 0,
+            width: 4,
+            height: 0,
+            rotation: 0,
+            top: 0,
+            left: 0,
+        },
+});
+
+React.useEffect(() => {
+    appElementClient.registerOnElementChange((element) => {
+        if(element) {
+            
+        }
+    })
+}, []);
+
+const appElementClient = initAppElement<AppElementDataRevised>({
+
+    render: (data) => {
+        
+        
+            return [
+                {
+                    type: "shape",
+                    viewBox: {
+                            width: data.vWidth,
+                            height: data.vHeight,
+                            top: data.vTop,
+                            left: data.vLeft,
+                            },
+
+                    paths: [{
+                        d: data.d,
+                        fill:  {
+                            dropTarget: false,
+                            color: data.color,
+                            
+                        },
+                        stroke: {
+                            weight: 4,
+                            color: data.color,
+                            strokeAlign: "inset",
+                        }
+
+                    }],
+                    top: data.top,
+                    left: data.left,
+                    width: data.width,
+                    height: data.height,
+                }
+            ]
+        }
+      
+    }
+
+);
 
 const handleSetup = async (startPoints: Coordinate,
     widthPoints: Coordinate,
@@ -66,56 +131,14 @@ const handleSetup = async (startPoints: Coordinate,
         overlay: "#2d2d2d"
     }
 
-    const marginsUI: AppElementData[] = [
+    const variations: AppElementDataRevised[] = [
         {
-            paths: [
-                {
-                    d: `M 0 0 V ${designSize.y * 3} H 3 L 3 0 Z`,
-                    fill: {
-                        dropTarget: false,
-                        color: colors.left,
-                    },
-                    stroke: {
-                        weight: 4,
-                        color: colors.left,
-                        strokeAlign: "inset"
-                    }
-                },
-            ],
-            viewBox: {
-                width: 4,
-                height: designSize.y * 3,
-                top: 0,
-                left: 0,
-            },
-            width: 4,
-            height: designSize.y * 3,
-            rotation: 0,
-            top: 0,
-            left: widthPoints.x,
-
-        },
-        {
-            paths: [
-                {
-                    d: `M 0 0 V ${designSize.y * 3} H 3 L 3 0 Z`,
-                    fill: {
-                        dropTarget: false,
-                        color: colors.left,
-                    },
-                    stroke: {
-                        weight: 4,
-                        color: colors.left,
-                        strokeAlign: "inset"
-                    }
-                },
-            ],
-            viewBox: {
-                width: 4,
-                height: designSize.y * 3,
-                top: 0,
-                left: 0,
-            },
+            d: `M 0 0 V ${designSize.y * 3} H 3 L 3 0 Z`,
+            color: colors.left,
+            vWidth: 4,
+            vHeight: designSize.y * 3,
+            vTop: 0,
+            vLeft: 0,
             width: 4,
             height: designSize.y * 3,
             rotation: 0,
@@ -123,329 +146,63 @@ const handleSetup = async (startPoints: Coordinate,
             left: widthPoints.x,
         },
         {
-            paths: [
-                {
-                    d: `M 0 0 H ${designSize.x * 3} V 3 L 0 3 Z`,
-                    fill: {
-                        dropTarget: false,
-                        color: colors.top,
-                    },
-                    stroke: {
-                        weight: 4,
-                        color: colors.top,
-                        strokeAlign: "inset"
-                    }
-                },
-            ],
-            viewBox: {
-                width: designSize.x * 3,
-                height: 4,
-                top: 0,
-                left: 0,
-            },
-            width: designSize.x * 3,
-            height: 4,
-            rotation: 0,
-            top: startPoints.x,
-            left: 0,
-        },
-        {
-            paths: [
-                {
-                    d: `M 0 0 H ${designSize.x * 3} V 3 L 0 3 Z`,
-                    fill: {
-                        dropTarget: false,
-                        color: colors.bottom,
-                    },
-                    stroke: {
-                        weight: 4,
-                        color: colors.bottom,
-                        strokeAlign: "inset"
-                    }
-                },
-            ],
-            viewBox: {
-                width: designSize.x * 3,
-                height: 4,
-                top: 0,
-                left: 0,
-            },
-            width: designSize.x * 3,
-            height: 4,
-            rotation: 0,
-            top: startPoints.y,
-            left: 0,
-        },
-        {
-            paths: [
-                {
-                    d: `M 0 0 H ${designSize.x} V ${designSize.y} L 0 ${designSize.y} Z`,
-                    fill: {
-                        dropTarget: false,
-                        color: colors.overlay,
-                    },
-                    stroke: {
-                        weight: 4,
-                        color: colors.overlay,
-                        strokeAlign: "inset"
-                    }
-                },
-            ],
-            viewBox: {
-                width: designSize.x,
-                height: designSize.y,
-                top: 0,
-                left: 0,
-            },
-            width: designSize.x,
-            height: designSize.y,
+            d: `M 0 0 V ${designSize.y * 3} H 3 L 3 0 Z`,
+            color: colors.right,
+            vWidth: 4,
+            vHeight: designSize.y * 3,
+            vTop: 0,
+            vLeft: 0,
+            width: 4,
+            height: designSize.y * 3,
             rotation: 0,
             top: 0,
-            left: 0,
-        }
-    ];
+            left: widthPoints.y,
+        },
+        {
+            d: `M 0 0 H ${designSize.x * 3} V 3 L 0 3 Z`,
+            color: colors.top,
+            vWidth: 4,
+            vHeight: designSize.x * 3,
+            vTop: 0,
+            vLeft: 0,
+            width: 4,
+            height: designSize.x * 3,
+            rotation: 0,
+            top: 0,
+            left: startPoints.x,
+        },
+        {
+            d: `M 0 0 H ${designSize.x * 3} V 3 L 0 3 Z`,
+            color: colors.bottom,
+            vWidth: 4,
+            vHeight: designSize.x * 3,
+            vTop: 0,
+            vLeft: 0,
+            width: 4,
+            height: designSize.x * 3,
+            rotation: 0,
+            top: 0,
+            left: startPoints.y,
+        },
+        {
+            d: `M 0 0 H ${designSize.x} V ${designSize.y} L 0 ${designSize.y} Z`,
+            color: colors.overlay,
+            vWidth: 4,
+            vHeight: designSize.x * 3,
+            vTop: 0,
+            vLeft: 0,
+            width: 4,
+            height: designSize.x * 3,
+            rotation: 0,
+            top: 0,
+            left: startPoints.y,
+        },
+    ]
 
-    const appElementClientLeft = initAppElement<AppElementData>({
-       
-        render: (data) => {
-            const i = 0;
-            if (marginsUI[i]) {
-                return [
-                    {
-                        type: "shape",
-                        viewBox: marginsUI[i].viewBox as ShapeViewBox,
-                        paths: marginsUI[i].paths as ShapePath[],
-                        top: marginsUI[i].top,
-                        left: marginsUI[i].left,
-                        width: marginsUI[i].width,
-                        height: marginsUI[i].height,
-                    }
-                ]
-            }
-            return [{
-                type: "shape",
-                viewBox: {
-                    width: 4,
-                    height: designSize.y * 3,
-                    top: 0,
-                    left: 0,
-                },
-                paths: [
-                    {
-                        d: `M 0 0 V ${designSize.y * 3} H 3 L 3 0 Z`,
-                        fill: {
-                            dropTarget: false,
-                            color: colors.left,
-                        },
-                        stroke: {
-                            weight: 4,
-                            color: colors.left,
-                            strokeAlign: "inset"
-                        }
-                    },
-                ],
-                top: 0,
-                left: 0,
-                width: 100,
-                height: 100,
-            }]
-        }
+    for (const data of variations) {
+        await appElementClient.addElement({data});
+    }
 
-    });
-
-    const appElementClientRight = initAppElement<AppElementData>({
-       
-        render: (data) => {
-            const i = 1;
-            if (marginsUI[i]) {
-                return [
-                    {
-                        type: "shape",
-                        viewBox: marginsUI[i].viewBox as ShapeViewBox,
-                        paths: marginsUI[i].paths as ShapePath[],
-                        top: marginsUI[i].top,
-                        left: marginsUI[i].left,
-                        width: marginsUI[i].width,
-                        height: marginsUI[i].height,
-                    }
-                ]
-            }
-            return [{
-                type: "shape",
-                viewBox: {
-                    width: 4,
-                    height: designSize.y * 3,
-                    top: 0,
-                    left: 0,
-                },
-                paths: [
-                    {
-                        d: `M 0 0 V ${designSize.y * 3} H 3 L 3 0 Z`,
-                        fill: {
-                            dropTarget: false,
-                            color: colors.left,
-                        },
-                        stroke: {
-                            weight: 4,
-                            color: colors.left,
-                            strokeAlign: "inset"
-                        }
-                    },
-                ],
-                top: 0,
-                left: 0,
-                width: 100,
-                height: 100,
-            }]
-        }
-
-    });
-
-    const appElementClientTop = initAppElement<AppElementData>({
-       
-        render: (data) => {
-            const i = 2;
-            if (marginsUI[i]) {
-                return [
-                    {
-                        type: "shape",
-                        viewBox: marginsUI[i].viewBox as ShapeViewBox,
-                        paths: marginsUI[i].paths as ShapePath[],
-                        top: marginsUI[i].top,
-                        left: marginsUI[i].left,
-                        width: marginsUI[i].width,
-                        height: marginsUI[i].height,
-                    }
-                ]
-            }
-            return [{
-                type: "shape",
-                viewBox: {
-                    width: 4,
-                    height: designSize.y * 3,
-                    top: 0,
-                    left: 0,
-                },
-                paths: [
-                    {
-                        d: `M 0 0 V ${designSize.y * 3} H 3 L 3 0 Z`,
-                        fill: {
-                            dropTarget: false,
-                            color: colors.left,
-                        },
-                        stroke: {
-                            weight: 4,
-                            color: colors.left,
-                            strokeAlign: "inset"
-                        }
-                    },
-                ],
-                top: 0,
-                left: 0,
-                width: 100,
-                height: 100,
-            }]
-        }
-
-    });
-
-    const appElementClientBottom = initAppElement<AppElementData>({
-       
-        render: (data) => {
-            const i = 3;
-            if (marginsUI[i]) {
-                return [
-                    {
-                        type: "shape",
-                        viewBox: marginsUI[i].viewBox as ShapeViewBox,
-                        paths: marginsUI[i].paths as ShapePath[],
-                        top: marginsUI[i].top,
-                        left: marginsUI[i].left,
-                        width: marginsUI[i].width,
-                        height: marginsUI[i].height,
-                    }
-                ]
-            }
-            return [{
-                type: "shape",
-                viewBox: {
-                    width: 4,
-                    height: designSize.y * 3,
-                    top: 0,
-                    left: 0,
-                },
-                paths: [
-                    {
-                        d: `M 0 0 V ${designSize.y * 3} H 3 L 3 0 Z`,
-                        fill: {
-                            dropTarget: false,
-                            color: colors.left,
-                        },
-                        stroke: {
-                            weight: 4,
-                            color: colors.left,
-                            strokeAlign: "inset"
-                        }
-                    },
-                ],
-                top: 0,
-                left: 0,
-                width: 100,
-                height: 100,
-            }]
-        }
-
-    });
-
-    const appElementClientOverlay = initAppElement<AppElementData>({
-       
-        render: (data) => {
-            const i = 4;
-            if (marginsUI[i]) {
-                return [
-                    {
-                        type: "shape",
-                        viewBox: marginsUI[i].viewBox as ShapeViewBox,
-                        paths: marginsUI[i].paths as ShapePath[],
-                        top: marginsUI[i].top,
-                        left: marginsUI[i].left,
-                        width: marginsUI[i].width,
-                        height: marginsUI[i].height,
-                    }
-                ]
-            }
-            return [{
-                type: "shape",
-                viewBox: {
-                    width: 4,
-                    height: designSize.y * 3,
-                    top: 0,
-                    left: 0,
-                },
-                paths: [
-                    {
-                        d: `M 0 0 V ${designSize.y * 3} H 3 L 3 0 Z`,
-                        fill: {
-                            dropTarget: false,
-                            color: colors.left,
-                        },
-                        stroke: {
-                            weight: 4,
-                            color: colors.left,
-                            strokeAlign: "inset"
-                        }
-                    },
-                ],
-                top: 0,
-                left: 0,
-                width: 100,
-                height: 100,
-            }]
-        }
-
-    });
-
-    
 
 
 
@@ -475,7 +232,7 @@ const handleSetup = async (startPoints: Coordinate,
             var times = 0;
             overlay.forEach((element) => {
                 if (element.locked || element.type === "unsupported") return;
-                element.transparency = 0.3;
+                element.transparency = 0.2;
 
                 return;
 

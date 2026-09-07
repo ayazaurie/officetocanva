@@ -95,3 +95,18 @@ export type AppElementData = {
         left: number;
 };
 
+export type AppElementDataRevised = {
+  d: string;
+  color: string;
+  vWidth: number;
+  vHeight: number;
+  vTop: number;
+  vLeft: number;
+  width: number;
+  height: number;
+  rotation: number;
+  top: number;
+  left: number;
+  opacity?: number;
+}
+
